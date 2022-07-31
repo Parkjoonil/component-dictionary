@@ -1,0 +1,42 @@
+<div class="container mt-5 text-center">
+    <div class="font-sans font-medium text-lg">Angular Image Crop Example</div>
+    <div class="col-md-12">
+        <input type="file" (change)="onFileChanged($event)" >
+    </div>
+
+    <div style="float: left">
+        <div class="font-sans text-base">Image Preview</div>
+
+        <image-cropper
+            [imageChangedEvent]="imgChangeEvt"
+            format="png"
+            (imageCropped)="cropImg($event)"
+            (imageLoaded)="imgLoad()"
+            (cropperReady)="initCropper()"
+            (loadImageFailed)="imgFailed()"
+        ></image-cropper>
+    </div>
+
+    <div style="float: left">
+        <img [src]="cropImagePreview" alt="">
+    </div>
+
+</div>
+
+<div class="container mt-5 text-center">
+    <div class="font-sans font-medium text-lg">Angular Image Upload & Preview Example</div>
+    <div class="col-md-12">
+        <input type="file" multiple="" (change)="uploadImage($event)" >
+    </div>
+
+    <div style="float: left">
+        <div class="font-sans text-base">Image Preview</div>
+
+        <img *ngFor="let image of images" [src]="image" alt="">
+        
+    </div>
+
+    <div style="float: left">
+    </div>
+
+</div>
