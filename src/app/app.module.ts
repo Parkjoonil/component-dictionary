@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UploadImageModule } from './upload-image/upload-image.module';
 import { WeatherComponent } from './weather/weather.component';
+import { WeatherModule } from './weather/weather.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { WeatherComponent } from './weather/weather.component';
     BrowserModule,
     AppRoutingModule,
     UploadImageModule,
-    WeatherComponent
+    WeatherModule
   ],
   providers: [],
   bootstrap: [AppComponent]
