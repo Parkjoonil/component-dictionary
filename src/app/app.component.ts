@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'component-dictionary';
   components: string[] = [
-    'upload-image'
+    'upload-image',
+    'google-map',
+    'youtube'
   ]
 
   constructor(
