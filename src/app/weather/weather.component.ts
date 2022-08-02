@@ -16,22 +16,24 @@ export class WeatherComponent implements OnInit {
   }
 
   cityName: string = 'Seoul';
+  cityNameInput: string = '';
   weatherData?: WeatherData;
 
   ngOnInit(): void {
+    
     this.getWeatherData(this.cityName);
-    this.cityName = '';
+    this.cityNameInput = '';
   }
 
   onSubmit() {
-    this.getWeatherData(this.cityName);
-    this.cityName = '';
+    this.getWeatherData(this.cityNameInput);
+    this.cityName = this.cityNameInput;
+    this.cityNameInput = '';
   }
 
   private getWeatherData(cityName: string) {
     this.weatherService.getWeatherData(cityName).subscribe({
       next: (response) => {
-        console.log(response);
         this.weatherData = response;
       }
     })
