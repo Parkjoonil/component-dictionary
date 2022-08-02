@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ImageCropperModule } from 'ngx-image-cropper';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UploadImageModule } from './upload-image/upload-image.module';
+import { WeatherComponent } from './weather/weather.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,8 @@ import { UploadImageModule } from './upload-image/upload-image.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UploadImageModule
+    UploadImageModule,
+    WeatherComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

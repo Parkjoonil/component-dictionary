@@ -11,7 +11,8 @@ export class AppComponent {
   components: string[] = [
     'upload-image',
     'google-map',
-    'youtube'
+    'youtube',
+    'weather'
   ]
 
   constructor(
