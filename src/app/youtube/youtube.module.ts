@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { YoutubeComponent } from './youtube.component';
+import { YoutubeService } from '../service/youtube/youtube.service';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -9,7 +12,12 @@ import { YoutubeComponent } from './youtube.component';
     YoutubeComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    BrowserModule
+  ],
+  providers: [
+    YoutubeService
   ]
 })
 export class YoutubeModule { }
