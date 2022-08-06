@@ -22,6 +22,7 @@ export class AppComponent {
   }
 
   open(url: string) {
+    this.title = url;
     this.router.navigate([url])
   }
 }
