@@ -24,22 +24,9 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if (this.inputElement) {
-      fromEvent(this.inputElement.nativeElement, 'keyup')
-        .pipe(
-            debounceTime(500),
-            pluck('target', 'value'),
-            distinctUntilChanged(),
-        )
-        .subscribe(
-          this.handleSearch(this.inputElement.nativeElement.value);
-      )
-    }
-  }
-
-  handleSearch(inputValue: string) {
+    
     this.loading = true;
-    this.youtubeService.getVideos(inputValue)
+    this.youtubeService.getVideos(this.inputElement.nativeElement.value.tostring())
       .subscribe((items: any) => {
         console.log(items)
         this.videos = items.map((item: any) => ({
@@ -56,6 +43,10 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
         this.inputTouched = true;
         this.loading = false;
       });
+  }
+
+  handleSearch(inputValue: string) {
+    
     }
 
 }
