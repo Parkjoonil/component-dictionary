@@ -33,7 +33,7 @@ export class GoogleMapComponent implements OnInit {
       
       
     // })
-    this.map.panTo(this.center)
+    
   }
 
   zoomIn() {
@@ -49,7 +49,8 @@ export class GoogleMapComponent implements OnInit {
   }
 
   logCenter() {
-    console.log(JSON.stringify(this.map.getCenter()))
+    const koreaPosition = new google.maps.LatLng(38, 127);
+    this.map.panTo(koreaPosition)
   }
 
   addMarker() {
