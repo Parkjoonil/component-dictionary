@@ -33,7 +33,20 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
         )
         .subscribe(() => {
           this.loading = true;
-          this.youtubeService.getVideos(`${this.inputElement.nativeElement.value}`)
+          this.searchVedio();
+        }
+        )
+    }
+    
+  }
+
+  handleSearch(inputValue: string) {
+    this.searchVedio();
+    }
+
+
+  private searchVedio() {
+    this.youtubeService.getVideos(`${this.inputElement.nativeElement.value}`)
             .subscribe((items: any) => {
               console.log(items)
               this.videos = items.map((item: any) => ({
@@ -51,14 +64,6 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
               this.loading = false;
             }
         );
-        }
-        )
-    }
-    
   }
-
-  handleSearch(inputValue: string) {
-    
-    }
 
 }
