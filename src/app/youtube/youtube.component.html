@@ -2,24 +2,19 @@
     <div class="fourteen wide column">
         <h1>Youtube Search </h1>
       <div>
-        <div class="flex justify-center items-center">
-          <input #input type="text" placeholder="Search for a video...">
-          <div class="px-4 py-2" (click)="onSearch(input)">Search</div>
+        <div class="flex justify-center items-center gap-4">
+          <input #inputValue class="px-4 py-2" [value]="keyword" type="text" placeholder="Search for a video..." (keyup.enter)="handleSearch()">
+          <div class="px-4 py-2 bg-blue-300 rounded-2 hover:bg-blue-200 text-white cursor-pointer" (click)="handleSearch()">Search</div>
         </div>
-        <div *ngIf="loading" style="margin: 3rem;">
-          <div class="ui active centered inline loader"></div>
-        </div>
-        <div class="ui four column grid">
-            <div class="column" *ngFor="let video of videos">
+            <div class="flex grid-cols-2" *ngFor="let video of videos">
               <div class="ui card">
-                <div class="image">
+                <div class="cursor-pointer" (click)="watchVideo(video.videoUrl)">
                   <img [src]="video.thumbnail">
                 </div>
                 <div class="content">
                   <a class="header" style="margin: 1em 0 1em 0;">{{ video.title }}</a>
                   <div class="meta">
                     <span class="date" style="font-weight: bolder;">
-                      <a [href]="video.channelUrl" target="_blank">{{ video.channelTitle }}</a>
                     </span>
                   </div>
                 </div>
@@ -27,7 +22,6 @@
                 </a>
               </div>
             </div>
-          </div>
     </div>
     </div>
   </div>

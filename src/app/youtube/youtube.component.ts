@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged, fromEvent, pluck } from 'rxjs';
 import { Video } from '../interface/video.interface';
 import { YoutubeService } from '../service/youtube/youtube.service';
@@ -10,42 +11,48 @@ import { YoutubeService } from '../service/youtube/youtube.service';
 })
 export class YoutubeComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('input') inputElement!: ElementRef;
+  @ViewChild('inputValue') inputElement: ElementRef;
 
   inputTouched = false;
   loading = false;
   videos: Video[] = [];
+  keyword: string = '';
 
   constructor(
-    private youtubeService: YoutubeService
+    private youtubeService: YoutubeService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
   }
 
   ngAfterViewInit() {
-    if (this.inputElement) {
-      fromEvent(this.inputElement.nativeElement, 'keyup')
-        .pipe(
-            debounceTime(500),
-            pluck('target', 'value'),
-            distinctUntilChanged(),
-        )
-        .subscribe(() => {
-          this.loading = true;
-          this.searchVedio();
-        }
-        )
-    }
+    // if (this.inputElement) {
+    //   fromEvent(this.inputElement.nativeElement, 'keyup')
+    //     .pipe(
+    //         debounceTime(500),
+    //         pluck('target', 'value'),
+    //         distinctUntilChanged(),
+    //     )
+    //     .subscribe(() => {
+    //       this.loading = true;
+    //       this.searchVideo();
+    //     }
+    //     )
+    // }
     
   }
 
-  handleSearch(inputValue: string) {
-    this.searchVedio();
-    }
+  handleSearch() {
+    this.searchVideo();
+  }
+
+  watchVideo(url: string) {
+    this.router.navigate([url])
+  }
 
 
-  private searchVedio() {
+  private searchVideo() {
     this.youtubeService.getVideos(`${this.inputElement.nativeElement.value}`)
             .subscribe((items: any) => {
               console.log(items)
