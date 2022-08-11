@@ -6,10 +6,10 @@
           <input [(ngModel)]="keyword" class="px-4 py-2" [value]="keyword" type="text" placeholder="Search for a video..." (keyup.enter)="handleSearch(keyword)">
           <div class="px-4 py-2 bg-blue-300 rounded-2 hover:bg-blue-200 text-white cursor-pointer" (click)="handleSearch(keyword)">Search</div>
         </div>
-            <div class="grid justify-center grid-cols-2 gap-8">
-              <div class="ui card" *ngFor="let video of videos">
-                <div class="cursor-pointer" (click)="watchVideo(video.videoUrl)">
-                  <img [src]="video.thumbnail">
+            <div class="grid justify-center grid-cols-2 gap-y-8">
+              <div *ngFor="let video of videos">
+                <div class="cursor-pointer" >
+                  <img [src]="video.thumbnail" (click)="watchVideo(video.videoUrl)">
                 </div>
                 <div class="content">
                   {{ video.title }}
