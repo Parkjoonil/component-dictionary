@@ -13,6 +13,7 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
 
   @ViewChild('inputValue') inputElement: ElementRef;
 
+
   inputTouched = false;
   loading = false;
   videos: Video[] = [];
@@ -43,8 +44,8 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
     
   }
 
-  handleSearch() {
-    this.searchVideo();
+  handleSearch(keyword: string) {
+    this.searchVideo(keyword);
   }
 
   watchVideo(url: string) {
@@ -52,8 +53,8 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   }
 
 
-  private searchVideo() {
-    this.youtubeService.getVideos(`${this.inputElement.nativeElement.value}`)
+  private searchVideo(keyword: string) {
+    this.youtubeService.getVideos(`${keyword}`)
             .subscribe((items: any) => {
               console.log(items)
               this.videos = items.map((item: any) => ({
