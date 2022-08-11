@@ -53,7 +53,7 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
                 channelTitle: item.snippet.channelTitle,
                 description: item.snippet.description,
                 publishedAt: new Date(item.snippet.publishedAt),
-                thumbnail: item.snippet.thumbnails.high.url
+                thumbnail: item.snippet.thumbnails.high.url,
               }));
               this.inputTouched = true;
               this.loading = false;
