@@ -29,6 +29,7 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.searchVideo('우왁굳');
+    this.searchVideo('고세구');
     
   }
 
