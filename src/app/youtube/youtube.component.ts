@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged, fromEvent, pluck } from 'rxjs';
 import { Video } from '../interface/video.interface';
 import { YoutubeService } from '../service/youtube/youtube.service';
@@ -10,45 +11,40 @@ import { YoutubeService } from '../service/youtube/youtube.service';
 })
 export class YoutubeComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('input') inputElement!: ElementRef;
+  @ViewChild('inputValue') inputElement: ElementRef;
+
 
   inputTouched = false;
   loading = false;
   videos: Video[] = [];
+  keyword: string = '';
 
   constructor(
-    private youtubeService: YoutubeService
+    private youtubeService: YoutubeService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
   }
 
   ngAfterViewInit() {
-    if (this.inputElement) {
-      fromEvent(this.inputElement.nativeElement, 'keyup')
-        .pipe(
-            debounceTime(500),
-            pluck('target', 'value'),
-            distinctUntilChanged(),
-        )
-        .subscribe(() => {
-          this.loading = true;
-          this.searchVedio();
-        }
-        )
-    }
+    this.searchVideo('우왁굳');
+    this.searchVideo('고세구');
     
   }
 
-  handleSearch(inputValue: string) {
-    this.searchVedio();
-    }
+  handleSearch(keyword: string) {
+    this.searchVideo(keyword);
+  }
+
+  watchVideo(url: string) {
+    this.router.navigate([url])
+  }
 
 
-  private searchVedio() {
-    this.youtubeService.getVideos(`${this.inputElement.nativeElement.value}`)
+  private searchVideo(keyword: string) {
+    this.youtubeService.getVideos(`${keyword}`)
             .subscribe((items: any) => {
-              console.log(items)
               this.videos = items.map((item: any) => ({
                 title: item.snippet.title,
                 videoId: item.id.videoId,
@@ -58,7 +54,7 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
                 channelTitle: item.snippet.channelTitle,
                 description: item.snippet.description,
                 publishedAt: new Date(item.snippet.publishedAt),
-                thumbnail: item.snippet.thumbnails.high.url
+                thumbnail: item.snippet.thumbnails.high.url,
               }));
               this.inputTouched = true;
               this.loading = false;

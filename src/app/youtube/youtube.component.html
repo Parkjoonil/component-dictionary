@@ -2,32 +2,22 @@
     <div class="fourteen wide column">
         <h1>Youtube Search </h1>
       <div>
-        <div class="flex justify-center items-center">
-          <input #input type="text" placeholder="Search for a video...">
-          <div class="px-4 py-2" (click)="onSearch(input)">Search</div>
+        <div class="flex justify-center items-center gap-4">
+          <input [(ngModel)]="keyword" class="px-4 py-2" [value]="keyword" type="text" placeholder="Search for a video..." (keyup.enter)="handleSearch(keyword)">
+          <div class="px-4 py-2 bg-blue-300 rounded-2 hover:bg-blue-200 text-white cursor-pointer" (click)="handleSearch(keyword)">Search</div>
         </div>
-        <div *ngIf="loading" style="margin: 3rem;">
-          <div class="ui active centered inline loader"></div>
-        </div>
-        <div class="ui four column grid">
-            <div class="column" *ngFor="let video of videos">
-              <div class="ui card">
-                <div class="image">
-                  <img [src]="video.thumbnail">
+            <div class="grid grid-cols-4 gap-y-8 gap-x-4 py-4">
+              <div *ngFor="let video of videos">
+                <div class="cursor-pointer" >
+                  <a [href]="video.videoUrl" target="_blank">
+                    <img  class="w-full" [src]="video.thumbnail" (click)="watchVideo(video.videoUrl)">
+                  </a>
                 </div>
                 <div class="content">
-                  <a class="header" style="margin: 1em 0 1em 0;">{{ video.title }}</a>
-                  <div class="meta">
-                    <span class="date" style="font-weight: bolder;">
-                      <a [href]="video.channelUrl" target="_blank">{{ video.channelTitle }}</a>
-                    </span>
-                  </div>
+                  {{ video.title }}
                 </div>
-                <a [href]="video.videoUrl" target="_blank" class="extra content">
-                </a>
               </div>
             </div>
-          </div>
     </div>
     </div>
   </div>
