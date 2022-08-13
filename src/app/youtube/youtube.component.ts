@@ -42,20 +42,25 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   }
 
 
-  private searchVideo(keyword: string) {
+  private async searchVideo(keyword: string) {
     this.youtubeService.getVideos(`${keyword}`)
             .subscribe((items: any) => {
-              this.videos = items.map((item: any) => ({
-                title: item.snippet.title,
-                videoId: item.id.videoId,
-                videoUrl: `https://www.youtube.com/watch?v=${item.id.videoId}`,
-                channelId: item.snippet.channelId,
-                channelUrl: `https://www.youtube.com/channel/${item.snippet.channelId}`,
-                channelTitle: item.snippet.channelTitle,
-                description: item.snippet.description,
-                publishedAt: new Date(item.snippet.publishedAt),
-                thumbnail: item.snippet.thumbnails.high.url,
-              }));
+              if(this.videos.length === 0) {    
+                
+                this.videos = items.map((item: any) => ({
+                  title: item.snippet.title,
+                  videoId: item.id.videoId,
+                  videoUrl: `https://www.youtube.com/watch?v=${item.id.videoId}`,
+                  channelId: item.snippet.channelId,
+                  channelUrl: `https://www.youtube.com/channel/${item.snippet.channelId}`,
+                  channelTitle: item.snippet.channelTitle,
+                  description: item.snippet.description,
+                  publishedAt: new Date(item.snippet.publishedAt),
+                  thumbnail: item.snippet.thumbnails.high.url,
+                }));
+              } else {
+                this.videos.push(items);
+              }
               this.inputTouched = true;
               this.loading = false;
             }
