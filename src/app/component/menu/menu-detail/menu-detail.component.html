@@ -1,0 +1,19 @@
+<div class="flex cursor-pointer items-center justify-between hover:bg-primary-light" [ngClass]="{'bg-primary-light': isActive}" (click)="isActive = !isActive">
+  <div class="flex items-center justify-center space-x-5">
+    <div class="h-full w-1.5 rounded-br-md rounded-tr-md bg-white py-5" *ngIf="isActive">&nbsp;</div>
+    <div class="h-full w-1.5 rounded-br-md rounded-tr-md bg-primary py-5" *ngIf="!isActive"></div>
+    <div class="flex items-center justify-center">
+      <div class="flex items-center justify-center space-x-3 py-5">
+        <ion-icon src="assets/icons/ic_contents.svg"></ion-icon>
+        <div class="text-lg text-white">{{ menu.name }}</div>
+      </div>
+    </div>
+  </div>
+  <ion-icon class="px-5 text-xl" src="assets/icons/ic_new_arrow_down.svg"></ion-icon>
+</div>
+<ng-container *ngIf="isActive">
+  <div class="flex cursor-pointer select-none items-center justify-start space-x-3 p-5 hover:bg-primary-light" *ngFor="let item of menu.items" [routerLink]="item.href" [ngClass]="{'bg-primary-light': item.href.split('/')[1] === path}">
+    <ion-icon [src]="'assets/icons/' + item.icon"></ion-icon>
+    <div class="text-white">{{ item.name }}</div>
+  </div>
+</ng-container>

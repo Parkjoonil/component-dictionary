@@ -1,11 +1,21 @@
-<div class="min-h-full flex">
-  <div class="w-[20%] bg-blue-600 py-4">
-      <div *ngFor="let component of components index as i" class="text-white text-center cursor-pointer py-4 hover:bg-blue-500" (click)="open(component)">
-        {{ component }}
-      </div>
+<div id="sidemenu" class="flex h-full w-full bg-gray-50">
+  <div class="h-full w-[350px] bg-blue-500">
+    <h1 class="flex cursor-pointer select-none flex-row items-center py-5 px-15 text-lg font-medium text-white" routerLink="/dashboard">컴포넌트 모음집</h1>
+    <div *ngFor="let component of components index as i" class="text-white text-center cursor-pointer py-4 hover:bg-blue-500" (click)="open(component)">
+      {{ component }}
+    </div>
   </div>
-  <div class="w-full p-6 gap-4">
-    <p>{{ title }}</p>
-    <router-outlet></router-outlet>
+
+  <div class="w-full bg-gray-50">
+    <div class="flex h-[66px] w-full justify-end border-b-1 border-gray-100 bg-white px-7 py-5" @introTopAnimation>
+      <div class="flex items-center space-x-3">
+        <div class="h-6 w-6 rounded-full bg-gray-400"></div>
+        <div class="relative flex cursor-pointer select-none items-center text-gray-800">
+          박준일 님
+        </div>
+      </div>
+    </div>
+      <p>{{ title }}</p>
+      <router-outlet></router-outlet>
   </div>
 </div>
