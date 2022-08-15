@@ -2,86 +2,35 @@ import { MenuInfo } from "./menu.component";
 
 export const menuList: MenuInfo[] = [
     {
-        category: 'product',
-        name: '상품',
+        category: 'image',
+        name: '이미지',
         items: [
             {
                 icon: 'ic_dotted.svg',
-                name: '상품 관리',
-                href: '/product',
-            },
-            {
-                icon: 'ic_dotted.svg',
-                name: '예약 관리',
-                href: '/reservation',
-            },
-            {
-                icon: 'ic_dotted.svg',
-                name: '예약자 관리',
-                href: '/consumer',
-            },
-            {
-                icon: 'ic_dotted.svg',
-                name: '알림 관리',
-                href: '/notification',
-            },
-            {
-                icon: 'ic_dotted.svg',
-                name: '결제 관리',
-                href: '/meeting',
+                name: '이미지 업로드',
+                href: '/upload-image',
             }
         ]
     },
     {
-        category: 'etc',
-        name: '기타',
+        category: 'api',
+        name: 'API',
         items: [
             {
                 icon: 'ic_dotted.svg',
-                name: '가이드 관리',
-                href: '/guide',
+                name: '날씨 API',
+                href: '/weather',
             },
             {
                 icon: 'ic_dotted.svg',
-                name: '짐꾸리기 관리',
-                href: '/packing',
+                name: '유튜브 API',
+                href: '/youtube',
             },
             {
                 icon: 'ic_dotted.svg',
-                name: '직원 관리',
-                href: '/manager',
-            },
-            {
-                icon: 'ic_dotted.svg',
-                name: '출입국신고서 관리',
-                href: '/arrivalcard',
+                name: '구글맵 API',
+                href: '/google-map',
             }
         ]
     },
-    {
-        category: 'contents',
-        name: '컨텐츠',
-        items: [
-            {
-                icon: 'ic_dotted.svg',
-                name: '국가 관리',
-                href: '/country',
-            },
-            {
-                icon: 'ic_dotted.svg',
-                name: '도시 관리',
-                href: '/city',
-            },
-            {
-                icon: 'ic_dotted.svg',
-                name: '공항 관리',
-                href: '/airport',
-            },
-            {
-                icon: 'ic_dotted.svg',
-                name: '호텔 관리',
-                href: '/hotel',
-            },
-        ]
-    }
 ]
