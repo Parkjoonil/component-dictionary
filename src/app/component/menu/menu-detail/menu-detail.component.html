@@ -4,12 +4,12 @@
     <div class="h-full w-1.5 rounded-br-md rounded-tr-md bg-primary py-5" *ngIf="!isActive"></div>
     <div class="flex items-center justify-center">
       <div class="flex items-center justify-center space-x-3 py-5">
-        <ion-icon src="assets/icons/ic_contents.svg"></ion-icon>
+        <ion-icon src="../../../../assets/contents.svg"></ion-icon>
         <div class="text-lg text-white">{{ menu.name }}</div>
       </div>
     </div>
   </div>
-  <ion-icon class="px-5 text-xl" src="assets/icons/ic_new_arrow_down.svg"></ion-icon>
+  <ion-icon class="px-5 text-xl" src="../../../../assets/new_arrow_down.svg"></ion-icon>
 </div>
 <ng-container *ngIf="isActive">
   <div class="flex cursor-pointer select-none items-center justify-start space-x-3 p-5 hover:bg-primary-light" *ngFor="let item of menu.items" [routerLink]="item.href" [ngClass]="{'bg-primary-light': item.href.split('/')[1] === path}">

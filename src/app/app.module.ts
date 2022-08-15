@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { IonicModule } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +25,8 @@ import { YoutubeModule } from './youtube/youtube.module';
     WeatherModule,
     YoutubeModule,
     GoogleMapModule,
-    CommonModule
+    CommonModule,
+    IonicModule
   ],
   providers: [],
   bootstrap: [AppComponent]
