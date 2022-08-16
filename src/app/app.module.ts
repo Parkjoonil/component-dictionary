@@ -26,7 +26,7 @@ import { YoutubeModule } from './youtube/youtube.module';
     YoutubeModule,
     GoogleMapModule,
     CommonModule,
-    IonicModule
+    IonicModule.forRoot({ mode: 'md', animated: false })
   ],
   providers: [],
   bootstrap: [AppComponent]
