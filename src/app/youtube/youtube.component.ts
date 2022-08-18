@@ -47,6 +47,7 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
     this.youtubeService.getVideos(`${keyword}`)
             .subscribe((items: any) => {
               if(this.videos.length === 0) {    
+                console.log(items);
                 
                 this.videos = items.map((item: any) => ({
                   title: item.snippet.title,
