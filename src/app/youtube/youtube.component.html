@@ -2,10 +2,10 @@
       <h1 class="font-bold text-3xl">Youtube Search </h1>
       <div class="my-4">
         <div class="flex justify-between items-center gap-4">
-          <input [(ngModel)]="keyword" class="px-4 py-2" [value]="keyword" type="text" placeholder="Search for a video..." (keyup.enter)="handleSearch(keyword)">
+          <input [(ngModel)]="keyword" class="px-4 py-2 w-full rounded-2" [value]="keyword" type="text" placeholder="Search for a video..." (keyup.enter)="handleSearch(keyword)">
           <div class="px-4 py-2 bg-blue-300 rounded-2 hover:bg-blue-200 text-white cursor-pointer" (click)="handleSearch(keyword)">Search</div>
           <div class="px-4 py-2 bg-blue-300 rounded-2 hover:bg-blue-200 text-white cursor-pointer" (click)="handleSearch(keyword)">Setting</div>
-          <div class="px-4 py-2 bg-blue-300 rounded-2 hover:bg-blue-200 text-white cursor-pointer" (click)="handleSearch(keyword)">Add Channel</div>
+          <div class="px-4 py-2 bg-blue-300 rounded-2 hover:bg-blue-200 text-white cursor-pointer" (click)="handleSearch(keyword)">Add</div>
         </div>
           <div class="grid grid-cols-4 gap-x-4 gap-y-8 py-4">
             <div *ngFor="let youtubeChannelId of youtubeChannelIds">
