@@ -1,21 +1,24 @@
 <div class="p-7">
       <h1 class="font-bold text-3xl">Youtube Search </h1>
       <div class="my-4">
-        <div class="flex justify-center items-center gap-4">
-          <input [(ngModel)]="keyword" class="px-4 py-2" [value]="keyword" type="text" placeholder="Search for a video..." (keyup.enter)="handleSearch(keyword)">
+        <div class="flex justify-between items-center gap-4">
+          <input [(ngModel)]="keyword" class="px-4 py-2 w-full rounded-2" [value]="keyword" type="text" placeholder="Search for a video..." (keyup.enter)="handleSearch(keyword)">
           <div class="px-4 py-2 bg-blue-300 rounded-2 hover:bg-blue-200 text-white cursor-pointer" (click)="handleSearch(keyword)">Search</div>
+          <div class="px-4 py-2 bg-blue-300 rounded-2 hover:bg-blue-200 text-white cursor-pointer" (click)="handleSearch(keyword)">Setting</div>
+          <div class="px-4 py-2 bg-blue-300 rounded-2 hover:bg-blue-200 text-white cursor-pointer" (click)="handleSearch(keyword)">Add</div>
         </div>
-            <div class="grid grid-cols-4 gap-y-8 gap-x-4 py-4">
-              <div *ngFor="let video of videos">
-                <div class="cursor-pointer" >
-                  <a [href]="video.videoUrl" target="_blank">
-                    <img  class="w-full" [src]="video.thumbnail" (click)="watchVideo(video.videoUrl)">
-                  </a>
-                </div>
-                <div class="content">
+          <div class="grid grid-cols-4 gap-x-4 gap-y-8 py-4">
+            <div *ngFor="let youtubeChannelId of youtubeChannelIds">
+              <div class="text-xl font-semibold text-center"> {{ youtubeChannelId.channelName }}</div>
+              <div class="py-4" *ngFor="let video of youtubeChannelId.videos">
+                <a class="cursor-pointer" [href]="video.videoUrl" target="_blank">
+                  <img  class="w-full" [src]="video.thumbnail" (click)="watchVideo(video.videoUrl)">
+                </a>
+                <div class="overflow-hidden text-ellipsis whitespace-nowrap pt-4">
                   {{ video.title }}
                 </div>
               </div>
             </div>
+        </div>
     </div>
   </div>

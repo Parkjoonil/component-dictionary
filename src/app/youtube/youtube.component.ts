@@ -4,6 +4,7 @@ import { debounceTime, distinctUntilChanged, fromEvent, pluck } from 'rxjs';
 import { Video } from '../interface/video.interface';
 import { YoutubeService } from '../service/youtube/youtube.service';
 
+type Dashboard = { channelName: string, channelId: string, videos?: Video[] };
 @Component({
   selector: 'app-youtube',
   templateUrl: './youtube.component.html',
@@ -19,6 +20,21 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   videos: Video[] = [];
   keyword: string = '';
 
+  youtubeChannelIds: Dashboard[] = [
+    {
+      channelName: '고세구',
+      channelId: 'UCV9WL7sW6_KjanYkUUaIDfQ',
+    },
+    {
+      channelName: '왁타버스',
+      channelId: 'UCzh4yY8rl38knH33XpNqXbQ',
+    },
+    {
+      channelName: '우왁굳',
+      channelId: 'UCBkyj16n2snkRg1BAzpovXQ',
+    },
+  ]
+
   constructor(
     private youtubeService: YoutubeService,
     private router: Router
@@ -28,10 +44,17 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.searchVideo('우왁굳');
-    this.searchVideo('고세구');
-    this.searchVideo('왁타버스');
-    
+    this.youtubeChannelIds.map((id) => {
+      this.youtubeService.getChannelVideos(id.channelId).subscribe((items) => {
+          id.videos = items.map((item: any) => ({
+            title: item.snippet.title,
+            videoId: item.id.videoId,
+            videoUrl: `https://www.youtube.com/watch?v=${item.id.videoId}`,
+            publishedAt: new Date(item.snippet.publishedAt),
+            thumbnail: item.snippet.thumbnails.high.url,
+          }));              
+      });
+    })
   }
 
   handleSearch(keyword: string) {
@@ -46,8 +69,9 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   private async searchVideo(keyword: string) {
     this.youtubeService.getVideos(`${keyword}`)
             .subscribe((items: any) => {
+              console.log(items);
+              
               if(this.videos.length === 0) {    
-                
                 this.videos = items.map((item: any) => ({
                   title: item.snippet.title,
                   videoId: item.id.videoId,

@@ -13,7 +13,7 @@
 </div>
 <ng-container *ngIf="isActive">
   <div class="flex cursor-pointer select-none items-center justify-start space-x-3 p-5 hover:bg-primary-light" *ngFor="let item of menu.items" [routerLink]="item.href" [ngClass]="{'bg-primary-light': item.href.split('/')[1] === path}">
-    <ion-icon [src]="'assets/icons/' + item.icon"></ion-icon>
+    <ion-icon [src]="'assets/' + item.icon"></ion-icon>
     <div class="text-white">{{ item.name }}</div>
   </div>
 </ng-container>
