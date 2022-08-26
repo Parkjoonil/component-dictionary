@@ -22,7 +22,7 @@ export class ModalService {
       scrollStrategy: this.overlay.scrollStrategies.block(),
     });
 
-    overlayRef.attach(this.component, null);
+    overlayRef.attach(new ComponentPortal(this.component, null));
 
     overlayRef.backdropClick().subscribe(_ => {
       overlayRef.dispose();
