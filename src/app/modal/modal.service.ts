@@ -16,7 +16,7 @@ export class ModalService {
 
   openOverlay(): void {
     const overlayRef = this.overlay.create({
-      porisitonStrategy: this.overlay.position().global(),
+      positionStrategy: this.overlay.position().global(),
       hasBackdrop: true,
       backdropClass: 'bg-black-50',
       scrollStrategy: this.overlay.scrollStrategies.block(),
