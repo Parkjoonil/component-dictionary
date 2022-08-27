@@ -11,6 +11,7 @@ import { GoogleMapModule } from './google-map/google-map.module';
 import { UploadImageModule } from './upload-image/upload-image.module';
 import { WeatherModule } from './weather/weather.module';
 import { YoutubeModule } from './youtube/youtube.module';
+import { OverlayModule } from '@angular/cdk/overlay'
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { YoutubeModule } from './youtube/youtube.module';
     YoutubeModule,
     GoogleMapModule,
     CommonModule,
+    OverlayModule,
     IonicModule.forRoot({ mode: 'md', animated: false })
   ],
   providers: [],

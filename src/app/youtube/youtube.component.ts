@@ -105,4 +105,12 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
         );
   }
 
+  setting() {
+
+  }
+
+  addChannel() {
+
+  }
+
 }
