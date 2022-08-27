@@ -1,6 +1,7 @@
 import { Overlay } from '@angular/cdk/overlay';
-import { ComponentPortal } from '@angular/cdk/portal';
+import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
 import { Injectable, Injector } from '@angular/core';
+import { MODAL_DATA } from './modal-token'
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class ModalService {
       scrollStrategy: this.overlay.scrollStrategies.block(),
     });
 
-    overlayRef.attach(new ComponentPortal(this.component, null));
+    overlayRef.attach(new ComponentPortal(this.component, null, new PortalInjector(this.injector, new WeakMap().set(MODAL_DATA, 'test'))));
 
     overlayRef.backdropClick().subscribe(_ => {
       overlayRef.dispose();

@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged, fromEvent, pluck } from 'rxjs';
 import { Video } from '../interface/video.interface';
 import { YoutubeService } from '../service/youtube/youtube.service';
+import { MODAL_DATA } from '../modal/modal-token'
 
 type Dashboard = { channelName: string, channelId: string, videos?: Video[] };
 @Component({
@@ -19,6 +20,8 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   loading = false;
   videos: Video[] = [];
   keyword: string = '';
+
+  data: any
 
   youtubeChannelIds: Dashboard[] = [
     {
@@ -37,8 +40,11 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
 
   constructor(
     private youtubeService: YoutubeService,
-    private router: Router
-  ) { }
+    private router: Router,
+    @Inject(MODAL_DATA) data
+  ) { 
+    this.data = data
+  }
 
   ngOnInit(): void {
   }
