@@ -8,14 +8,12 @@ import { MODAL_DATA } from './modal-token'
 })
 export class ModalService {
 
-  component: any;
-
   constructor(
     private injector: Injector,
     private overlay: Overlay
   ) { }
 
-  openOverlay(): void {
+  openOverlay(component: any): void {
     const overlayRef = this.overlay.create({
       positionStrategy: this.overlay.position().global(),
       hasBackdrop: true,
@@ -23,7 +21,7 @@ export class ModalService {
       scrollStrategy: this.overlay.scrollStrategies.block(),
     });
 
-    overlayRef.attach(new ComponentPortal(this.component, null, new PortalInjector(this.injector, new WeakMap().set(MODAL_DATA, 'test'))));
+    overlayRef.attach(new ComponentPortal(component, null, new PortalInjector(this.injector, new WeakMap().set(MODAL_DATA, 'test'))));
 
     overlayRef.backdropClick().subscribe(_ => {
       overlayRef.dispose();

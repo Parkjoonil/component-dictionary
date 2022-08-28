@@ -12,4 +12,8 @@ export class SettingsYoutubeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  closeModal() {
+    
+  }
+
 }
