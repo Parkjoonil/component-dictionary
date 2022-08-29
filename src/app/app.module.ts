@@ -12,6 +12,7 @@ import { UploadImageModule } from './upload-image/upload-image.module';
 import { WeatherModule } from './weather/weather.module';
 import { YoutubeModule } from './youtube/youtube.module';
 import { OverlayModule } from '@angular/cdk/overlay'
+import { PortalModule } from '@angular/cdk/portal';
 
 @NgModule({
   declarations: [
@@ -28,9 +29,12 @@ import { OverlayModule } from '@angular/cdk/overlay'
     GoogleMapModule,
     CommonModule,
     OverlayModule,
+    PortalModule,
     IonicModule.forRoot({ mode: 'md', animated: false })
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -22,7 +22,7 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   loading = false;
   videos: Video[] = [];
   keyword: string = '';
-  count: number = 3;
+  count: number = 2;
 
   data: any
 
@@ -45,9 +45,9 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
     private youtubeService: YoutubeService,
     private router: Router,
     private modalService: ModalService,
-    // @Inject(MODAL_DATA) data
+    @Inject(MODAL_DATA) data
   ) { 
-    // this.data = data
+    this.data = data;
   }
 
   ngOnInit(): void {
