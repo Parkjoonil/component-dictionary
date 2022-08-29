@@ -3,6 +3,10 @@ import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
 import { Injectable, Injector } from '@angular/core';
 import { MODAL_DATA } from './modal-token'
 
+
+export interface ModalConfig {
+  data?: any;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -15,9 +19,9 @@ export class ModalService {
 
   openOverlay(component: any): void {
     const overlayRef = this.overlay.create({
-      positionStrategy: this.overlay.position().global(),
+      positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically(),
       hasBackdrop: true,
-      backdropClass: 'bg-black-50',
+      backdropClass: 'cdk-overlay-dark-backdrop',
       scrollStrategy: this.overlay.scrollStrategies.block(),
     });
 
@@ -27,4 +31,53 @@ export class ModalService {
       overlayRef.dispose();
     })
   }
+
+//   show<T>(component: ComponentType<T>, config?: ModalConfig) {
+//     const positionStrategy = this.overlay
+//       .position()
+//       .global()
+//       .centerHorizontally()
+//       .centerVertically();
+
+//     const overlayRef = this.overlay.create({
+//       positionStrategy,
+//       hasBackdrop: true,
+//       backdropClass: 'bg-black/30',
+//     });
+
+//     const modalRef = new ModalRef(overlayRef);
+
+//     const injector = Injector.create({
+//       parent: this.injector,
+//       providers: [
+//         { provide: ModalRef, useValue: modalRef },
+//         { provide: MODAL_DATA, useValue: config?.data },
+//       ],
+//     });
+
+//     const portal = new ComponentPortal(component, null, injector);
+//     overlayRef.attach(portal);
+
+//     overlayRef.backdropClick().subscribe(() => {
+//       overlayRef.detach();
+//     });
+
+//     return modalRef;
+//   }
+// }
+
+// export class ModalRef {
+//   private closedResult = new Subject<any>();
+
+//   constructor(private overlayRef: OverlayRef) {}
+
+//   public close(result?: any) {
+//     this.overlayRef.dispose();
+//     this.closedResult.next(result);
+//     this.closedResult.complete();
+//   }
+
+//   public onDismiss(): Observable<any> {
+//     return this.closedResult.asObservable();
+//   }
 }

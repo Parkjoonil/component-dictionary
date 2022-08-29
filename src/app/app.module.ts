@@ -13,6 +13,8 @@ import { WeatherModule } from './weather/weather.module';
 import { YoutubeModule } from './youtube/youtube.module';
 import { OverlayModule } from '@angular/cdk/overlay'
 import { PortalModule } from '@angular/cdk/portal';
+import { MODAL_DATA } from './modal/modal-token';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,10 +32,11 @@ import { PortalModule } from '@angular/cdk/portal';
     CommonModule,
     OverlayModule,
     PortalModule,
+    ReactiveFormsModule,
     IonicModule.forRoot({ mode: 'md', animated: false })
   ],
   providers: [
-
+    { provide: MODAL_DATA, useValue: {}}
   ],
   bootstrap: [AppComponent]
 })

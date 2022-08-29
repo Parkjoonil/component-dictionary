@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { debounceTime, distinctUntilChanged, fromEvent, pluck } from 'rxjs';
 import { Video } from '../interface/video.interface';
 import { YoutubeService } from '../service/youtube/youtube.service';
 import { MODAL_DATA } from '../modal/modal-token'
