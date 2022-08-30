@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { debounceTime, distinctUntilChanged, fromEvent, pluck } from 'rxjs';
 import { Video } from '../interface/video.interface';
 import { YoutubeService } from '../service/youtube/youtube.service';
 import { MODAL_DATA } from '../modal/modal-token'
+import { ModalService } from '../modal/modal.service';
+import { SettingsYoutubeComponent } from './settings-youtube/settings-youtube.component';
 
 type Dashboard = { channelName: string, channelId: string, videos?: Video[] };
 @Component({
@@ -20,6 +21,7 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   loading = false;
   videos: Video[] = [];
   keyword: string = '';
+  count: number = 2;
 
   data: any
 
@@ -41,9 +43,10 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   constructor(
     private youtubeService: YoutubeService,
     private router: Router,
+    private modalService: ModalService,
     @Inject(MODAL_DATA) data
   ) { 
-    this.data = data
+    this.data = data;
   }
 
   ngOnInit(): void {
@@ -51,7 +54,7 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.youtubeChannelIds.map((id) => {
-      this.youtubeService.getChannelVideos(id.channelId).subscribe((items) => {
+      this.youtubeService.getChannelVideos(id.channelId, this.count).subscribe((items) => {
           id.videos = items.map((item: any) => ({
             title: item.snippet.title,
             videoId: item.id.videoId,
@@ -64,7 +67,7 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   }
 
   handleSearch(keyword: string) {
-    this.searchVideo(keyword);
+    this.searchVideo(keyword, this.count);
   }
 
   watchVideo(url: string) {
@@ -72,10 +75,9 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   }
 
 
-  private async searchVideo(keyword: string) {
-    this.youtubeService.getVideos(`${keyword}`)
+  private async searchVideo(keyword: string, count: number) {
+    this.youtubeService.getVideos(keyword, count)
             .subscribe((items: any) => {
-              console.log(items);
               
               if(this.videos.length === 0) {    
                 this.videos = items.map((item: any) => ({
@@ -112,7 +114,7 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   }
 
   setting() {
-
+    this.modalService.openOverlay(SettingsYoutubeComponent);
   }
 
   addChannel() {

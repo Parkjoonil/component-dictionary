@@ -3,18 +3,23 @@ import { YoutubeComponent } from './youtube.component';
 import { YoutubeService } from '../service/youtube/youtube.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SettingsYoutubeComponent } from './settings-youtube/settings-youtube.component';
+import { ChannelsYoutubeComponent } from './channels-youtube/channels-youtube.component';
 
 
 
 @NgModule({
   declarations: [
-    YoutubeComponent
+    YoutubeComponent,
+    SettingsYoutubeComponent,
+    ChannelsYoutubeComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule
   ],
   providers: [
     YoutubeService
