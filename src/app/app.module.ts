@@ -33,6 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     OverlayModule,
     PortalModule,
     ReactiveFormsModule,
+    
     IonicModule.forRoot({ mode: 'md', animated: false })
   ],
   providers: [
