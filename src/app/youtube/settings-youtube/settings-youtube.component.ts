@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSliderChange } from '@angular/material/slider';
 
 @Component({
   selector: 'app-settings-youtube',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsYoutubeComponent implements OnInit {
 
-  constructor() { }
+  videoNums : number;
+
+  constructor(
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  onInputChange(event: MatSliderChange) {
+    this.videoNums = event.value;
   }
 
   closeModal() {
