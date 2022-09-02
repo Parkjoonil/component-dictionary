@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SettingsYoutubeComponent } from './settings-youtube/settings-youtube.component';
 import { ChannelsYoutubeComponent } from './channels-youtube/channels-youtube.component';
+import { MatSliderModule } from '@angular/material/slider';
 
 
 
@@ -19,7 +20,8 @@ import { ChannelsYoutubeComponent } from './channels-youtube/channels-youtube.co
     CommonModule,
     FormsModule,
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSliderModule,
   ],
   providers: [
     YoutubeService
