@@ -41,54 +41,6 @@ export class ModalService {
     return modalRef;
   }
 
-//   show<T>(component: ComponentType<T>, config?: ModalConfig) {
-//     const positionStrategy = this.overlay
-//       .position()
-//       .global()
-//       .centerHorizontally()
-//       .centerVertically();
-
-//     const overlayRef = this.overlay.create({
-//       positionStrategy,
-//       hasBackdrop: true,
-//       backdropClass: 'bg-black/30',
-//     });
-
-//     const modalRef = new ModalRef(overlayRef);
-
-//     const injector = Injector.create({
-//       parent: this.injector,
-//       providers: [
-//         { provide: ModalRef, useValue: modalRef },
-//         { provide: MODAL_DATA, useValue: config?.data },
-//       ],
-//     });
-
-//     const portal = new ComponentPortal(component, null, injector);
-//     overlayRef.attach(portal);
-
-//     overlayRef.backdropClick().subscribe(() => {
-//       overlayRef.detach();
-//     });
-
-//     return modalRef;
-//   }
-// }
-
-// export class ModalRef {
-//   private closedResult = new Subject<any>();
-
-//   constructor(private overlayRef: OverlayRef) {}
-
-//   public close(result?: any) {
-//     this.overlayRef.dispose();
-//     this.closedResult.next(result);
-//     this.closedResult.complete();
-//   }
-
-//   public onDismiss(): Observable<any> {
-//     return this.closedResult.asObservable();
-//   }
 }
 
 
