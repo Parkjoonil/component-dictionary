@@ -114,7 +114,7 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   }
 
   setting() {
-    this.modalService.openOverlay(SettingsYoutubeComponent);
+    this.modalService.openOverlay(SettingsYoutubeComponent, 3);
   }
 
   addChannel() {

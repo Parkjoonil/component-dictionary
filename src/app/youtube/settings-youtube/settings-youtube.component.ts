@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatSliderChange } from '@angular/material/slider';
+import { MODAL_DATA } from 'src/app/modal/modal-token';
 
 @Component({
   selector: 'app-settings-youtube',
@@ -11,7 +12,10 @@ export class SettingsYoutubeComponent implements OnInit {
   videoNums : number;
 
   constructor(
-  ) { }
+    @Inject(MODAL_DATA) data: any
+  ) { 
+    this.videoNums = data;
+  }
 
   ngOnInit(): void {
   }
