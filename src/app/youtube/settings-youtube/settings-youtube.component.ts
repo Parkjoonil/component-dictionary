@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatSliderChange } from '@angular/material/slider';
+import { MODAL_DATA } from 'src/app/modal/modal-token';
+import { ModalRef } from 'src/app/modal/modal.service';
 
 @Component({
   selector: 'app-settings-youtube',
@@ -11,7 +13,11 @@ export class SettingsYoutubeComponent implements OnInit {
   videoNums : number;
 
   constructor(
-  ) { }
+    @Inject(MODAL_DATA) data: any,
+    private modalRef: ModalRef
+  ) { 
+    this.videoNums = data;
+  }
 
   ngOnInit(): void {
   }
@@ -21,7 +27,7 @@ export class SettingsYoutubeComponent implements OnInit {
   }
 
   closeModal() {
-    
+    this.modalRef.close(this.videoNums);
   }
 
 }

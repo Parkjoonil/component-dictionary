@@ -114,7 +114,21 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   }
 
   setting() {
-    this.modalService.openOverlay(SettingsYoutubeComponent);
+    this.modalService.openOverlay(SettingsYoutubeComponent, this.count).onDismiss().subscribe((num) => {
+      this.count = num;
+      
+      this.youtubeChannelIds.map((id) => {
+        this.youtubeService.getChannelVideos(id.channelId, this.count).subscribe((items) => {
+            id.videos = items.map((item: any) => ({
+              title: item.snippet.title,
+              videoId: item.id.videoId,
+              videoUrl: `https://www.youtube.com/watch?v=${item.id.videoId}`,
+              publishedAt: new Date(item.snippet.publishedAt),
+              thumbnail: item.snippet.thumbnails.high.url,
+            }));              
+        });
+      })
+    });
   }
 
   addChannel() {
