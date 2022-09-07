@@ -133,8 +133,9 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   }
 
   addChannel() {
-    this.modalService.openOverlay(ChannelsYoutubeComponent, this.youtubeChannelIds).onDismiss().subscribe((num) => {
-      
+    this.modalService.openOverlay(ChannelsYoutubeComponent, this.youtubeChannelIds).onDismiss().subscribe((channels) => {
+      this.youtubeChannelIds = channels;
+
       this.youtubeChannelIds.map((id) => {
         this.youtubeService.getChannelVideos(id.channelId, this.count).subscribe((items) => {
             id.videos = items.map((item: any) => ({
