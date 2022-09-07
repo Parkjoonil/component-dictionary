@@ -5,6 +5,7 @@ import { YoutubeService } from '../service/youtube/youtube.service';
 import { MODAL_DATA } from '../modal/modal-token'
 import { ModalService } from '../modal/modal.service';
 import { SettingsYoutubeComponent } from './settings-youtube/settings-youtube.component';
+import { ChannelsYoutubeComponent } from './channels-youtube/channels-youtube.component';
 
 type Dashboard = { channelName: string, channelId: string, videos?: Video[] };
 @Component({
@@ -132,7 +133,20 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   }
 
   addChannel() {
-
+    this.modalService.openOverlay(ChannelsYoutubeComponent, this.youtubeChannelIds).onDismiss().subscribe((num) => {
+      
+      this.youtubeChannelIds.map((id) => {
+        this.youtubeService.getChannelVideos(id.channelId, this.count).subscribe((items) => {
+            id.videos = items.map((item: any) => ({
+              title: item.snippet.title,
+              videoId: item.id.videoId,
+              videoUrl: `https://www.youtube.com/watch?v=${item.id.videoId}`,
+              publishedAt: new Date(item.snippet.publishedAt),
+              thumbnail: item.snippet.thumbnails.high.url,
+            }));              
+        });
+      })
+    });
   }
 
 }
