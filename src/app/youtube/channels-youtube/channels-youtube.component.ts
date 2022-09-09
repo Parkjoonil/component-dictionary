@@ -11,13 +11,16 @@ type Dashboard = { channelName: string, channelId: string, videos?: Video[] };
 })
 export class ChannelsYoutubeComponent implements OnInit {
 
-  youtubeChannelIds: Dashboard
+  youtubeChannelIds: Dashboard;
+
+  indexNumberStart: number;
 
   constructor(
     @Inject(MODAL_DATA) data: any,
     private modalRef: ModalRef
   ) { 
     this.youtubeChannelIds = data;
+    this.indexNumberStart = data.length();
   }
 
   ngOnInit(): void {
