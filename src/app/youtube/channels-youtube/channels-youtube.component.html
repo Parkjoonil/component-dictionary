@@ -2,7 +2,7 @@
     <div>
       <div class="flex justify-between items-center">
         <div class="font-bold text-lg ">채널 추가</div>
-        <input>
+        <input [(ngModel)]="channelName" class="px-4 py-2 w-full rounded-3" [value]="channelName" type="text" placeholder="Search for a video..." (keyup.enter)="addChannel(channelName)">
       </div>
       <div class="flex justify-between items-center">
         <div class="font-bold text-lg ">채널 리스트</div>

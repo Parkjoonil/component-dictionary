@@ -15,6 +15,8 @@ export class ChannelsYoutubeComponent implements OnInit {
 
   indexNumberStart: number;
 
+  channelName: string;
+
   constructor(
     @Inject(MODAL_DATA) data: any,
     private modalRef: ModalRef
@@ -28,6 +30,10 @@ export class ChannelsYoutubeComponent implements OnInit {
 
   closeModal() {
     this.modalRef.close(this.youtubeChannelIds);
+  }
+
+  addChannel(name: string) {
+    this.modalRef.close(name);
   }
 
 }
