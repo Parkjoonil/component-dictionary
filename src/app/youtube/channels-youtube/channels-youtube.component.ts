@@ -37,7 +37,7 @@ export class ChannelsYoutubeComponent implements OnInit {
   }
 
   updateChannel() {
-
+    this.modalRef.close(this.youtubeChannelIds);
   }
 
   deleteChannel() {
