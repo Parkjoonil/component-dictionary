@@ -20,7 +20,7 @@ export class YoutubeService {
 
   getChannelVideos(channelId : string, count: number): Observable <any> {  
     
-    const url = `${this.API_URL}/search?&key=${this.API_KEY}&part=snippet&type=video&order=date&channelId=${channelId}&maxResults=${count}`;
+    const url = `${this.API_URL}/search?key=${this.API_KEY}&part=snippet&type=video&order=date&channelId=${channelId}&maxResults=${count}`;
     return this.http.get(url)
       .pipe(
         map((response: any) => response.items)
@@ -28,7 +28,7 @@ export class YoutubeService {
   }
 
   getChannels(name: string): Observable <any> {
-    const url = `${this.API_URL}/channels?forUsername=${name}`;
+    const url = `${this.API_URL}/channels?key=${this.API_KEY}&part=snippet&forUsername=${name}`;
     return this.http.get(url)
       .pipe(
         map((response: any) => response)
