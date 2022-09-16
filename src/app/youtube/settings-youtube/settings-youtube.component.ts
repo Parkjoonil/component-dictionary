@@ -16,7 +16,7 @@ export class SettingsYoutubeComponent implements OnInit {
     @Inject(MODAL_DATA) data: any,
     private modalRef: ModalRef
   ) { 
-    this.videoNums = data;
+    this.videoNums = data;    
   }
 
   ngOnInit(): void {

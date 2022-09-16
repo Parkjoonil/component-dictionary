@@ -28,15 +28,15 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
 
   youtubeChannelIds: Dashboard[] = [
     {
-      channelName: '고세구',
+      channelName: '고세구 GOSEGU',
       channelId: 'UCV9WL7sW6_KjanYkUUaIDfQ',
     },
     {
-      channelName: '왁타버스',
+      channelName: '왁타버스 WAKTAVERSE',
       channelId: 'UCzh4yY8rl38knH33XpNqXbQ',
     },
     {
-      channelName: '우왁굳',
+      channelName: '우왁굳의 게임방송',
       channelId: 'UCBkyj16n2snkRg1BAzpovXQ',
     },
   ]
