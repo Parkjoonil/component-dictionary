@@ -31,7 +31,8 @@ export class YoutubeService {
     const url = `${this.API_URL}/channels?&key=${this.API_KEY}&part=snippet&forUsername=${name}`;
     return this.http.get(url)
       .pipe(
-        map((response: any) => response)
+        map((response: any) => 
+        console.log(response))
       )
   }
 
