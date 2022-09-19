@@ -21,6 +21,7 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   inputTouched = false;
   loading = false;
   videos: Video[] = [];
+  videosList: Video[] = [];
   keyword: string = '';
   count: number = 2;
 
@@ -55,14 +56,14 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.youtubeChannelIds.map((id) => {
-      this.youtubeService.getChannelVideos(id.channelId, this.count).subscribe((items) => {
+      this.youtubeService.getChannelVideos(id.channelId, 5).subscribe((items) => {
           id.videos = items.map((item: any) => ({
             title: item.snippet.title,
             videoId: item.id.videoId,
             videoUrl: `https://www.youtube.com/watch?v=${item.id.videoId}`,
             publishedAt: new Date(item.snippet.publishedAt),
             thumbnail: item.snippet.thumbnails.high.url,
-          }));              
+          }));
       });
     })
   }
@@ -119,15 +120,10 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
       this.count = num;
       
       this.youtubeChannelIds.map((id) => {
-        this.youtubeService.getChannelVideos(id.channelId, this.count).subscribe((items) => {
-            id.videos = items.map((item: any) => ({
-              title: item.snippet.title,
-              videoId: item.id.videoId,
-              videoUrl: `https://www.youtube.com/watch?v=${item.id.videoId}`,
-              publishedAt: new Date(item.snippet.publishedAt),
-              thumbnail: item.snippet.thumbnails.high.url,
-            }));              
-        });
+        for (let i = 0; i < num; i++) {
+          const element = array[i];
+          
+        }
       })
     });
   }
