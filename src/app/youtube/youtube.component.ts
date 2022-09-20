@@ -64,6 +64,7 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
             publishedAt: new Date(item.snippet.publishedAt),
             thumbnail: item.snippet.thumbnails.high.url,
           }));
+          this.videosList.push(items);
       });
     })
   }
