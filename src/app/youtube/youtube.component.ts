@@ -121,10 +121,10 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
       this.count = num;
       
       this.youtubeChannelIds.map((id) => {
-        for (let i = 0; i < num; i++) {
-          const element = array[i];
+        // for (let i = 0; i < num; i++) {
+        //   const element = array[i];
           
-        }
+        // }
       })
     });
   }
