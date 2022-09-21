@@ -64,7 +64,6 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
             publishedAt: new Date(item.snippet.publishedAt),
             thumbnail: item.snippet.thumbnails.high.url,
           }));
-          this.videosList.push(items);
       });
     })
   }
@@ -119,14 +118,9 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   setting() {
     this.modalService.openOverlay(SettingsYoutubeComponent, this.count).onDismiss().subscribe((num) => {
       this.count = num;
-      
-      this.youtubeChannelIds.map((id) => {
-        // for (let i = 0; i < num; i++) {
-        //   const element = array[i];
-          
-        // }
-      })
-    });
+      });
+    console.log(this.count);
+    
   }
 
   addChannel() {

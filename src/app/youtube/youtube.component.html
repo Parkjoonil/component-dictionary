@@ -11,7 +11,7 @@
             <div *ngFor="let youtubeChannelId of youtubeChannelIds">
               <div class="text-xl font-semibold text-center"> {{ youtubeChannelId.channelName }}</div>
               <div class="py-4" *ngFor="let video of youtubeChannelId.videos index as i">
-                <ng-container *ngIf="i <= count">
+                <ng-container *ngIf="i < count">
                   <a class="cursor-pointer" [href]="video.videoUrl" target="_blank">
                     <img  class="w-full" [src]="video.thumbnail" (click)="watchVideo(video.videoUrl)">
                   </a>
