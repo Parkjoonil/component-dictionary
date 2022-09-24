@@ -45,7 +45,6 @@ export class GoogleMapComponent implements OnInit {
   }
 
   click(event: google.maps.MapMouseEvent) {
-    console.log(event.latLng.toString())
   }
 
   logCenter() {

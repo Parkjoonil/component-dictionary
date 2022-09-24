@@ -20,7 +20,6 @@ export class UploadImageComponent implements OnInit {
 
   onFileChanged(event: any) {
     this.imgChangeEvt = event;
-    console.log(event);
     
     this.cropImagePreview = event;
   }
