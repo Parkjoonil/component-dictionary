@@ -39,8 +39,6 @@ export class ChannelsYoutubeComponent implements OnInit {
   }
 
   addChannel(name: string) {
-    console.log('test');
-    
     this.youtubeService.getChannels(name);
     
   }
