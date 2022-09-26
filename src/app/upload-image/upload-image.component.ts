@@ -41,9 +41,7 @@ export class UploadImageComponent implements OnInit {
   }
 
   cropImg(e: ImageCroppedEvent) {
-    this.cropImagePreview = e.base64;
-    console.log(this.cropImagePreview);
-    
+    this.cropImagePreview = e.base64;    
   }
 
   imgLoad() {
