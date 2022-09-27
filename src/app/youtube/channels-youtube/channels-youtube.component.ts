@@ -20,6 +20,8 @@ export class ChannelsYoutubeComponent implements OnInit {
 
   channelList: string[];
 
+  searchResults: Dashboard[];
+
 
   constructor(
     @Inject(MODAL_DATA) data: any,
@@ -39,7 +41,10 @@ export class ChannelsYoutubeComponent implements OnInit {
   }
 
   addChannel(name: string) {
-    this.youtubeService.getChannels(name);
+    this.youtubeService.getChannels(name).subscribe((res) => {
+      console.log(res);
+      
+    });
     
   }
 
