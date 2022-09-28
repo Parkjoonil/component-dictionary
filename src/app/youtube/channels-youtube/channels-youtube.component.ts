@@ -22,7 +22,7 @@ export class ChannelsYoutubeComponent implements OnInit {
 
   channelList: string[];
 
-  searchResults: ChannelInfo[];
+  searchResults: ChannelInfo[] = [];
 
 
   constructor(
@@ -44,12 +44,12 @@ export class ChannelsYoutubeComponent implements OnInit {
 
   searchChannel(name: string) {
     this.youtubeService.getChannels(name).subscribe((res) => {
-      console.log(res.length);
+      console.log(res)
       res.map((channel) => {
         this.searchResults.push({
           channelId: channel.snippet.channelId,
           channelName: channel.snippet.channelTitle,
-          thumbnail: channel.snippt.thumbnail.high.url
+          thumbnail: channel.snippet.thumbnails.high.url
         })
       })
       
