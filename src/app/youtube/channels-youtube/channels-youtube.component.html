@@ -2,8 +2,22 @@
   <div class="font-bold text-lg ">채널 추가</div>
     <div>
       <div class="flex justify-between items-center">
-        <input [(ngModel)]="channelName" class="px-4 py-2 w-full rounded-3" [value]="channelName" type="text" placeholder="Search for a video..." (keyup.enter)="addChannel(channelName)">
-
+        <div class="flex justify-between w-full gap-4">
+          <input [(ngModel)]="channelName" class="px-4 py-2 rounded-2 w-full" [value]="channelName" type="text" placeholder="Search for a video..." (keyup.enter)="searchChannel(channelName)">
+          <div class="px-4 py-2 bg-blue-300 text-white rounded-2 cursor-pointer hover:bg-blue-200" (click)="searchChannel(channelName)">검색</div>
+        </div>
+        <ng-container *ngIf="channelName">
+          <ng-container *ngFor="let searchResult of searchResults">
+            <div class="flex h-full w-full cursor-pointer items-center justify-center border-b hover:bg-gray-50">
+              <div class="flex w-[20%] justify-center p-4">asdasd</div>
+              <div class="flex w-[60%] justify-start p-4">asd</div>
+              <div class="flex w-[20%] justify-center p-4">
+                <div (click)="closeModal()"></div>
+                <div (click)="deleteChannel()"></div>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
       </div>
       <div class="font-bold text-lg pt-4">채널 리스트</div>
         <div class="flex w-full items-center justify-center border-b font-bold">

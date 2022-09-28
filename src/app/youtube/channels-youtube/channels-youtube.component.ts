@@ -1,10 +1,12 @@
 import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
+import { asapScheduler } from 'rxjs';
 import { Video } from 'src/app/interface/video.interface';
 import { MODAL_DATA } from 'src/app/modal/modal-token';
 import { ModalRef } from 'src/app/modal/modal.service';
 import { YoutubeService } from 'src/app/service/youtube/youtube.service';
 
 type Dashboard = { channelName: string, channelId: string, videos?: Video[] };
+type ChannelInfo = { channelName: string, channelId: string, thumbnail: string };
 @Component({
   selector: 'app-channels-youtube',
   templateUrl: './channels-youtube.component.html',
@@ -20,7 +22,7 @@ export class ChannelsYoutubeComponent implements OnInit {
 
   channelList: string[];
 
-  searchResults: Dashboard[];
+  searchResults: ChannelInfo[];
 
 
   constructor(
@@ -40,9 +42,16 @@ export class ChannelsYoutubeComponent implements OnInit {
     this.modalRef.close(this.youtubeChannelIds);
   }
 
-  addChannel(name: string) {
+  searchChannel(name: string) {
     this.youtubeService.getChannels(name).subscribe((res) => {
-      console.log(res);
+      console.log(res.length);
+      res.map((channel) => {
+        this.searchResults.push({
+          channelId: channel.snippet.channelId,
+          channelName: channel.snippet.channelTitle,
+          thumbnail: channel.snippt.thumbnail.high.url
+        })
+      })
       
     });
     
