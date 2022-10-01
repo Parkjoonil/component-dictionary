@@ -61,4 +61,8 @@ export class ChannelsYoutubeComponent implements OnInit {
     
   }
 
+  addChannel() {
+    
+  }
+
 }
