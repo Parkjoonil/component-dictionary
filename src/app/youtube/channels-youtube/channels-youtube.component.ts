@@ -36,6 +36,7 @@ export class ChannelsYoutubeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   closeModal() {
@@ -61,8 +62,12 @@ export class ChannelsYoutubeComponent implements OnInit {
     
   }
 
-  addChannel() {
-    
+  addChannel(searchResult: ChannelInfo) {
+    this.youtubeChannelIds.push({
+      channelId: searchResult.channelId,
+      channelName: searchResult.channelName
+    })
+    // this.youtubeService.getChannelVideos(this.youtubeChannelIds[this.youtubeChannelIds - 1])
   }
 
 }
