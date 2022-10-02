@@ -13,7 +13,7 @@
               <div class="flex w-[60%] justify-start p-4">{{searchResult.channelName}}</div>
               <div class="flex w-[20%] justify-center p-4">
                 <div class="px-4 py-2 bg-green-300 text-white rounded-2 cursor-pointer hover:bg-green-200" (click)="addChannel(searchResult)">추가</div>
-                <div class="px-4 py-2 bg-red-300 text-white rounded-2 cursor-pointer hover:bg-red-200" (click)="deleteChannel()">삭제</div>
+                <div class="px-4 py-2 bg-red-300 text-white rounded-2 cursor-pointer hover:bg-red-200" (click)="deleteChannel(searchResult)">삭제</div>
               </div>
             </div>
           </ng-container>

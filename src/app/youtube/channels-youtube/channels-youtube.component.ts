@@ -58,16 +58,19 @@ export class ChannelsYoutubeComponent implements OnInit {
     
   }
 
-  deleteChannel() {
+  deleteChannel(youtubeChannelId: Dashboard) {
     
   }
 
   addChannel(searchResult: ChannelInfo) {
-    this.youtubeChannelIds.push({
-      channelId: searchResult.channelId,
-      channelName: searchResult.channelName
+    this.youtubeService.getChannelVideos(searchResult.channelId, 5).subscribe((videos) => {
+      this.youtubeChannelIds.push({
+        channelId: searchResult.channelId,
+        channelName: searchResult.channelName,
+        videos: videos
+      })
     })
-    // this.youtubeService.getChannelVideos(this.youtubeChannelIds[this.youtubeChannelIds - 1])
+    
   }
 
 }
