@@ -10,13 +10,15 @@
           <div class="grid grid-cols-4 gap-x-4 gap-y-8 py-4">
             <div *ngFor="let youtubeChannelId of youtubeChannelIds">
               <div class="text-xl font-semibold text-center"> {{ youtubeChannelId.channelName }}</div>
-              <div class="py-4" *ngFor="let video of youtubeChannelId.videos">
-                <a class="cursor-pointer" [href]="video.videoUrl" target="_blank">
-                  <img  class="w-full" [src]="video.thumbnail" (click)="watchVideo(video.videoUrl)">
-                </a>
-                <div class="overflow-hidden text-ellipsis whitespace-nowrap pt-4">
-                  {{ video.title }}
-                </div>
+              <div class="py-4" *ngFor="let video of youtubeChannelId.videos index as i">
+                <ng-container *ngIf="i < count">
+                  <a class="cursor-pointer" [href]="video.videoUrl" target="_blank">
+                    <img  class="w-full" [src]="video.thumbnail" (click)="watchVideo(video.videoUrl)">
+                  </a>
+                  <div class="overflow-hidden text-ellipsis whitespace-nowrap pt-4">
+                    {{ video.title }}
+                  </div>
+                </ng-container>
               </div>
             </div>
         </div>

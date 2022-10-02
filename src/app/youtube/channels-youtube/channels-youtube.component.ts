@@ -1,10 +1,12 @@
 import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
+import { asapScheduler } from 'rxjs';
 import { Video } from 'src/app/interface/video.interface';
 import { MODAL_DATA } from 'src/app/modal/modal-token';
 import { ModalRef } from 'src/app/modal/modal.service';
 import { YoutubeService } from 'src/app/service/youtube/youtube.service';
 
 type Dashboard = { channelName: string, channelId: string, videos?: Video[] };
+type ChannelInfo = { channelName: string, channelId: string, thumbnail: string };
 @Component({
   selector: 'app-channels-youtube',
   templateUrl: './channels-youtube.component.html',
@@ -20,6 +22,8 @@ export class ChannelsYoutubeComponent implements OnInit {
 
   channelList: string[];
 
+  searchResults: ChannelInfo[] = [];
+
 
   constructor(
     @Inject(MODAL_DATA) data: any,
@@ -32,18 +36,40 @@ export class ChannelsYoutubeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   closeModal() {
     this.modalRef.close(this.youtubeChannelIds);
   }
 
-  addChannel(name: string) {
-    this.youtubeService.getChannels(name);
+  searchChannel(name: string) {
+    this.youtubeService.getChannels(name).subscribe((res) => {
+      console.log(res)
+      res.map((channel) => {
+        this.searchResults.push({
+          channelId: channel.snippet.channelId,
+          channelName: channel.snippet.channelTitle,
+          thumbnail: channel.snippet.thumbnails.high.url
+        })
+      })
+      
+    });
     
   }
 
-  deleteChannel() {
+  deleteChannel(youtubeChannelId: Dashboard) {
+    
+  }
+
+  addChannel(searchResult: ChannelInfo) {
+    this.youtubeService.getChannelVideos(searchResult.channelId, 5).subscribe((videos) => {
+      this.youtubeChannelIds.push({
+        channelId: searchResult.channelId,
+        channelName: searchResult.channelName,
+        videos: videos
+      })
+    })
     
   }
 
