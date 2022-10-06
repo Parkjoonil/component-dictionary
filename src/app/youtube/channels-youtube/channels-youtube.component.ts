@@ -58,7 +58,7 @@ export class ChannelsYoutubeComponent implements OnInit {
   }
 
   deleteChannel(youtubeChannelId: Dashboard) {
-    this.youtubeChannelIds.filter((element) => element !== youtubeChannelId)
+    this.youtubeChannelIds = this.youtubeChannelIds.filter((element) => element !== youtubeChannelId);
   }
 
   addChannel(searchResult: ChannelInfo) {
