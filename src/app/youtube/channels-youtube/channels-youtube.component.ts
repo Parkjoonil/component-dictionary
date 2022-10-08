@@ -44,7 +44,7 @@ export class ChannelsYoutubeComponent implements OnInit {
   }
 
   searchChannel(name: string) {
-    this.youtubeService.getChannels(name).subscribe((res) => {
+    this.youtubeService.getVideos(name, 3).subscribe((res) => {
       res.map((channel) => {
         this.searchResults.push({
           channelId: channel.snippet.channelId,
