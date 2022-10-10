@@ -6,7 +6,7 @@ import { ModalRef } from 'src/app/modal/modal.service';
 import { YoutubeService } from 'src/app/service/youtube/youtube.service';
 
 type Dashboard = { channelName: string, channelId: string, videos?: Video[] };
-type ChannelInfo = { channelName: string, channelId: string, thumbnail: string };
+type ChannelInfo = { channelName: string, channelId: string, thumbnail?: string };
 @Component({
   selector: 'app-channels-youtube',
   templateUrl: './channels-youtube.component.html',
@@ -44,13 +44,18 @@ export class ChannelsYoutubeComponent implements OnInit {
   }
 
   searchChannel(name: string) {
-    this.youtubeService.getVideos(name, 3).subscribe((res) => {
+    this.searchResults = [];
+    this.youtubeService.getVideos(name, 5).subscribe((res) => {
       res.map((channel) => {
-        this.searchResults.push({
-          channelId: channel.snippet.channelId,
-          channelName: channel.snippet.channelTitle,
-          thumbnail: channel.snippet.thumbnails.high.url
+        this.youtubeService.getChannelInfo(channel.snippet.channelId).subscribe((info) => {
+          this.searchResults.push({
+            channelId: channel.snippet.channelId,
+            channelName: channel.snippet.channelTitle,
+            thumbnail: info.items[0].snippet.thumbnails.high.url
+          })
         })
+        this.searchResults = [...new Set(this.searchResults)];
+
       })
       
     });
