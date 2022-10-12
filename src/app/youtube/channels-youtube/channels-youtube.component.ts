@@ -49,16 +49,12 @@ export class ChannelsYoutubeComponent implements OnInit {
     this.youtubeService.getVideos(name, 5).subscribe((res) => {
       res.map((channel) => {
         this.youtubeService.getChannelInfo(channel.snippet.channelId).subscribe((info) => {
-          const temp = {
+          this.searchResults.push({
             channelId: channel.snippet.channelId,
             channelName: channel.snippet.channelTitle,
             thumbnail: info.items[0].snippet.thumbnails.high.url
-          }
-          if(!this.searchResults.includes(temp)) {
-            console.log(temp);
-            console.log(this.searchResults[this.searchResults.length - 1])
-            this.searchResults.push(temp);
-          }
+          })
+          
         })
       })
     });
