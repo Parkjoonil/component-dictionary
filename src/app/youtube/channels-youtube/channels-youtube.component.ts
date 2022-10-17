@@ -50,8 +50,8 @@ export class ChannelsYoutubeComponent implements OnInit {
       res.map((channel) => {
         this.youtubeService.getChannelInfo(channel.snippet.channelId).subscribe((info) => {
           this.searchResults.push({
-            channelId: channel.snippet.channelId,
             channelName: channel.snippet.channelTitle,
+            channelId: channel.snippet.channelId,
             thumbnail: info.items[0].snippet.thumbnails.high.url
           })
           
@@ -67,10 +67,20 @@ export class ChannelsYoutubeComponent implements OnInit {
 
   addChannel(searchResult: ChannelInfo) {
     this.youtubeService.getChannelVideos(searchResult.channelId, 5).subscribe((videos) => {
+      const videoList: Video[] = [];
+      for (const video of videos) {
+        videoList.push({
+          videoId: video.id.videoId,
+          videoUrl: `https://www.youtube.com/watch?v=${video.id.videoId}`,
+          title: video.snippet.title,
+          publishedAt: video.snippet.publishedAt,
+          thumbnail: video.snippet.thumbnails.high.url
+        })
+      }
       this.youtubeChannelIds.push({
         channelId: searchResult.channelId,
         channelName: searchResult.channelName,
-        videos: videos
+        videos: videoList
       })
     })
     
