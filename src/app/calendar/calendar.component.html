@@ -1,1 +1,123 @@
-<p>calendar works!</p>
+<div class="p-7">
+    <h1 class="font-bold text-3xl">Calendar </h1>
+    <div class="my-4">
+        <div class="flex justify-between items-center">
+            <div @introLeftAnimation>
+                <div class="text-3xl font-semibold">
+                    캘린더
+                </div>
+                <div class="text-lg font-medium text-gray-500 py-2">
+                    출석체크 > 캘린더
+                </div>
+            </div>
+            <div class="flex justify-center items-center" @introRightAnimation>
+                <div class="ml-8">
+                    <div
+                        class="w-[120px] h-[48px] bg-accent text-white px-3.5 py-2.5 text-base font-bold flex justify-center items-center rounded-2xl hover:bg-blue-600 hover:shadow-2xl select-none cursor-pointer" (click)="moralStatus='create'">
+                        출석하기
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex mt-5 flex-col justify-center w-full gap-2 p-8 rounded-2xl bg-white">
+            <div class="flex justify-between w-full">
+                <div class="flex items-center space-x-10">
+                    <img src="assets/images/button-left.png" alt="" class="hover:bg-gray-200 rounded-full p-2 w-8 h-8 cursor-pointer" (click)="getBeforeMonthCalendar(selectedYear, selectedMonth - 1)">
+                    <div class="text-lg font-medium text-left text-gray-900" >{{ selectedYear }}년 {{ selectedMonth + 1}}월</div>
+                    <img src="assets/images/button-left.png" alt="" class="hover:bg-gray-200 rounded-full p-2 w-8 h-8 rotate-180 cursor-pointer" (click)="getNextMonthCalendar(selectedYear, selectedMonth + 1)">
+                    <div class="ml-8">
+                        <div class="w-[100px] h-[44px] bg-accent text-white px-3.5 py-2.5 text-base font-bold flex justify-center items-center rounded-2xl hover:bg-blue-600 hover:shadow-2xl select-none cursor-pointer" >
+                            전체보기
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">          
+                    <div class="flex justify-center items-center relative gap-2">
+                        <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="flex-grow-0 flex-shrink-0 w-2 h-2 relative" preserveAspectRatio="none">
+                            <circle cx="4" cy="4" r="4" fill="#818CF8"></circle>
+                        </svg>
+                        <div class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-gray-700">연차사용</div>
+                    </div>
+                    <div class="flex justify-center items-center relative gap-2">
+                        <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="flex-grow-0 flex-shrink-0 w-2 h-2 relative" preserveAspectRatio="none">
+                            <circle cx="4" cy="4" r="4" fill="#78716C"></circle>
+                        </svg>
+                        <div class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-gray-700">병가사용</div>
+                    </div>
+                    <div class="flex justify-center items-center relative gap-2">
+                        <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="flex-grow-0 flex-shrink-0 w-2 h-2 relative" preserveAspectRatio="none">
+                            <circle cx="4" cy="4" r="4" fill="#34D399"></circle>
+                        </svg>
+                        <div class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-gray-700">출근완료</div>
+                    </div>
+                    <div class="flex justify-center items-center relative gap-2">
+                        <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="flex-grow-0 flex-shrink-0 w-2 h-2 relative" preserveAspectRatio="none">
+                            <circle cx="4" cy="4" r="4" fill="#F87171"></circle>
+                        </svg>
+                        <div class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-gray-700">지각발생</div>
+                    </div>
+                    <div class="flex justify-center items-center rounded-xl bg-accent p-2">
+                        <div class="flex-grow-0 flex-shrink-0 text-lg font-medium text-left text-white">Today</div>
+                    </div>
+                    <div class="text-lg font-medium text-left text-gray-700"> {{ Today | date:'YYYY-MM-dd, EEEE'  }} </div>
+                </div>
+            </div>
+            <div class="flex flex-col justify-center items-center self-stretch flex-grow relative">
+                <div class="self-stretch relative grid grid-cols-7 my-6">
+                    <div class="">
+                        <div class=" text-lg font-medium text-center text-red-500">Sun</div>
+                    </div>
+                    <div class="">
+                        <div class=" text-lg font-medium text-center text-gray-500">Mon</div>
+                    </div>
+                    <div class="">
+                        <div class=" text-lg font-medium text-center text-gray-500">Tue</div>
+                    </div>
+                    <div class="">
+                        <div class=" text-lg font-medium text-center text-gray-500">Wed</div>
+                    </div>
+                    <div class="">
+                        <div class=" text-lg font-medium text-center text-gray-500">Thu</div>
+                    </div>
+                    <div class="">
+                        <div class=" text-lg font-medium text-center text-gray-500">Fri</div>
+                    </div>
+                    <div class="">
+                        <div class=" text-lg font-medium text-center text-blue-500">Sat</div>
+                    </div>
+                </div>
+                <div class="self-stretch relative grid grid-cols-7">
+                    <div class="h-[76px] rounded-2xl flex items-center justify-center" *ngFor="let day of selectedDaysInBeforeMonth">
+                        <div class="h-full w-full text-lg font-medium text-center text-gray-300 flex items-center justify-center" [ngClass]="{'text-red-300' : day[1] == 0, 'text-gray-300' : day[1] !== 0}">{{ day[0] }}</div>
+                    </div>      
+                    <div class="h-[76px] border-b-[20px] rounded-2xl flex items-center justify-center border-transparent cursor-pointer hover:bg-gray-100" [ngClass]="{'bg-blue-100 hover:bg-blue-200' : day[0] == todayDate && selectedMonth == Today.getMonth() && selectedYear == Today.getFullYear()}" *ngFor="let day of selectedDaysInMonth">
+                        <div class="h-10 w-10 text-lg font-medium text-center rounded-full flex items-center justify-center"  [ngClass]="{'bg-green-300' : this.checkdaystatus[day[0]] === 1, 'bg-yellow-300' : this.checkdaystatus[day[0]] === 2, 'bg-red-300' : this.checkdaystatus[day[0]] === 3, 'bg-indigo-300' : this.checkdaystatus[day[0]] === 4, 'bg-stone-300' : this.checkdaystatus[day[0]] === 5, 'text-red-500' : day[1] == 0, 'text-gray-500 ' : day[1] !== 0, 'text-blue-500' : day[1] == 6}">{{ day[0] }}</div>
+                    </div>      
+                    <div class="h-[76px] rounded-2xl flex items-center justify-center" *ngFor="let day of selectedDaysInNextMonth">
+                        <div class="h-full w-full text-lg font-medium text-center text-gray-300 flex items-center justify-center" [ngClass]="{'text-blue-300' : day[1] == 6, 'text-gray-300' : day[1] !== 0}">{{ day[0] }}</div>
+                    </div>      
+                </div>
+            </div>
+        </div>
+        <div class="mt-5 min-h-[4rem] h-[425px] overflow-y-auto scrollbar-thin dark: scrollbar-thumb-gray-300 scrollbar-track-transparent">
+            <div class="my-5 h-16 flex items-center bg-white rounded-2xl " *ngFor="let listAttendanceCheck of listAttendanceChecks" @introBottomFadeAnimation>
+                <div class="w-[25%] h-full text-base font-medium text-gray-700 flex justify-center items-center">
+                    {{ selectedUserName }}
+                </div>
+                <div class="w-[25%] h-full text-base font-medium text-gray-700 flex justify-center items-center">
+                    {{ listAttendanceCheck.date }}
+                </div>
+                <div class="w-[25%] h-full text-base font-medium text-gray-700 flex justify-center items-center">
+                    {{ listAttendanceCheck.attendancetime }}
+                </div>
+                <div class="w-[25%] h-full text-base font-medium flex justify-center items-center" [ngClass]="{'text-green-400' : listAttendanceCheck.status === 1, 'text-yellow-400' : listAttendanceCheck.status === 2, 'text-red-400' : listAttendanceCheck.status === 3, 'text-indigo-400' : listAttendanceCheck.status === 4, 'text-gray-500' : listAttendanceCheck.status === 5}">
+                    {{ listAttendanceCheck.reference }}
+                </div>
+            </div>
+        </div>
+  </div>
+</div>
