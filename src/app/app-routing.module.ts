@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CalendarComponent } from './calendar/calendar.component';
 import { GoogleMapComponent } from './google-map/google-map.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
 import { WeatherComponent } from './weather/weather.component';
@@ -22,6 +23,10 @@ const routes: Routes = [
     path: 'google-map',
     component: GoogleMapComponent
   },
+  {
+    path: 'calendar',
+    component: CalendarComponent
+  }
 ];
 
 @NgModule({

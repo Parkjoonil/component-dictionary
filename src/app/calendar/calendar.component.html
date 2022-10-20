@@ -22,9 +22,9 @@
         <div class="flex mt-5 flex-col justify-center w-full gap-2 p-8 rounded-2xl bg-white">
             <div class="flex justify-between w-full">
                 <div class="flex items-center space-x-10">
-                    <img src="assets/images/button-left.png" alt="" class="hover:bg-gray-200 rounded-full p-2 w-8 h-8 cursor-pointer" (click)="getBeforeMonthCalendar(selectedYear, selectedMonth - 1)">
+                    <img src="assets/button-left.png" alt="" class="hover:bg-gray-200 rounded-full p-2 w-8 h-8 cursor-pointer" (click)="getBeforeMonthCalendar(selectedYear, selectedMonth - 1)">
                     <div class="text-lg font-medium text-left text-gray-900" >{{ selectedYear }}년 {{ selectedMonth + 1}}월</div>
-                    <img src="assets/images/button-left.png" alt="" class="hover:bg-gray-200 rounded-full p-2 w-8 h-8 rotate-180 cursor-pointer" (click)="getNextMonthCalendar(selectedYear, selectedMonth + 1)">
+                    <img src="assets/button-left.png" alt="" class="hover:bg-gray-200 rounded-full p-2 w-8 h-8 rotate-180 cursor-pointer" (click)="getNextMonthCalendar(selectedYear, selectedMonth + 1)">
                     <div class="ml-8">
                         <div class="w-[100px] h-[44px] bg-accent text-white px-3.5 py-2.5 text-base font-bold flex justify-center items-center rounded-2xl hover:bg-blue-600 hover:shadow-2xl select-none cursor-pointer" >
                             전체보기
@@ -103,7 +103,7 @@
                 </div>
             </div>
         </div>
-        <div class="mt-5 min-h-[4rem] h-[425px] overflow-y-auto scrollbar-thin dark: scrollbar-thumb-gray-300 scrollbar-track-transparent">
+        <!-- <div class="mt-5 min-h-[4rem] h-[425px] overflow-y-auto scrollbar-thin dark: scrollbar-thumb-gray-300 scrollbar-track-transparent">
             <div class="my-5 h-16 flex items-center bg-white rounded-2xl " *ngFor="let listAttendanceCheck of listAttendanceChecks" @introBottomFadeAnimation>
                 <div class="w-[25%] h-full text-base font-medium text-gray-700 flex justify-center items-center">
                     {{ selectedUserName }}
@@ -118,6 +118,6 @@
                     {{ listAttendanceCheck.reference }}
                 </div>
             </div>
-        </div>
+        </div> -->
   </div>
 </div>
