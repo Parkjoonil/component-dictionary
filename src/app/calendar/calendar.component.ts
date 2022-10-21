@@ -86,7 +86,6 @@ export class CalendarComponent implements OnInit {
       selectYear--;
     }
     this.calendar(selectYear, selectMonth);
-    // this.getcalendarAttendance(selectYear, selectMonth + 1);
   }
 
   getNextMonthCalendar(selectYear: number, selectMonth: number) {
@@ -95,6 +94,5 @@ export class CalendarComponent implements OnInit {
       selectYear++;
     }
     this.calendar(selectYear, selectMonth);
-    // this.getcalendarAttendance(selectYear, selectMonth + 1);
   }
 }
