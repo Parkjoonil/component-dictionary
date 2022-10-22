@@ -74,12 +74,6 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  // getCalendarDate(day: number) {
-  //     this.calendarService.getSortCalendars(this.selectedYear.toString(), `${this.selectedMonth<10?'0':''}${(this.selectedMonth + 1).toString()}`, this.selectedUserId).subscribe((calendars) => {
-  //       this.listAttendanceChecks = calendars.filter(calendar => calendar.date === `${this.selectedYear}-${this.selectedMonth<10?'0':''}${this.selectedMonth + 1}-${day<10?'0':''}${day}`);
-  //     }); 
-  // }
-
   getBeforeMonthCalendar(selectYear: number, selectMonth: number) {
     if(selectMonth === -1) {
       selectMonth = 11;
