@@ -5,7 +5,7 @@
             <div class="flex justify-center items-center">
                 <div class="ml-8">
                     <div
-                        class="w-[120px] h-[48px] bg-accent text-white px-3.5 py-2.5 text-base font-bold flex justify-center items-center rounded-2xl hover:bg-blue-600 hover:shadow-2xl select-none cursor-pointer" (click)="moralStatus='create'">
+                        class="min-w-fit bg-accent text-white px-3.5 py-2.5 text-base font-bold flex justify-center items-center rounded-2xl hover:bg-blue-600 hover:shadow-2xl select-none cursor-pointer" (click)="moralStatus='create'">
                         출석하기
                     </div>
                 </div>
@@ -23,35 +23,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex items-center space-x-3">          
-                    <div class="flex justify-center items-center relative gap-2">
-                        <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg"
-                            class="flex-grow-0 flex-shrink-0 w-2 h-2 relative" preserveAspectRatio="none">
-                            <circle cx="4" cy="4" r="4" fill="#818CF8"></circle>
-                        </svg>
-                        <div class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-gray-700">연차사용</div>
-                    </div>
-                    <div class="flex justify-center items-center relative gap-2">
-                        <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg"
-                            class="flex-grow-0 flex-shrink-0 w-2 h-2 relative" preserveAspectRatio="none">
-                            <circle cx="4" cy="4" r="4" fill="#78716C"></circle>
-                        </svg>
-                        <div class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-gray-700">병가사용</div>
-                    </div>
-                    <div class="flex justify-center items-center relative gap-2">
-                        <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg"
-                            class="flex-grow-0 flex-shrink-0 w-2 h-2 relative" preserveAspectRatio="none">
-                            <circle cx="4" cy="4" r="4" fill="#34D399"></circle>
-                        </svg>
-                        <div class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-gray-700">출근완료</div>
-                    </div>
-                    <div class="flex justify-center items-center relative gap-2">
-                        <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg"
-                            class="flex-grow-0 flex-shrink-0 w-2 h-2 relative" preserveAspectRatio="none">
-                            <circle cx="4" cy="4" r="4" fill="#F87171"></circle>
-                        </svg>
-                        <div class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-gray-700">지각발생</div>
-                    </div>
+                <div class="flex items-center space-x-3">
+                    <ng-container *ngFor="let check of checkStatus">
+                        <div class="flex justify-center items-center relative gap-2">
+                            <ion-icon src="../../assets/dot.svg" [color]="check.fill"></ion-icon>
+                            <div class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-gray-700">{{ check.status }}</div>
+                        </div>
+                    </ng-container>
+
                     <div class="flex justify-center items-center rounded-xl bg-accent p-2">
                         <div class="flex-grow-0 flex-shrink-0 text-lg font-medium text-left text-white">Today</div>
                     </div>

@@ -4,6 +4,7 @@ import './lunarcalendar.js';
 
 type moralStatus = 'none' | 'create'
 
+type checkStatus = { fill: string, status: string };
 
 @Component({
   selector: 'app-calendar',
@@ -11,6 +12,27 @@ type moralStatus = 'none' | 'create'
   styleUrls: ['./calendar.component.scss'],
 })
 export class CalendarComponent implements OnInit {
+
+  checkStatus: checkStatus[] = [
+    {
+      fill: '#818CF8',
+      status: '연차사용' 
+    },
+    {
+      fill: '#78716C',
+      status: '병가사용' 
+    },
+    {
+      fill: '#34D399',
+      status: '출근완료' 
+    },
+    {
+      fill: '#F87171',
+      status: '지각발생' 
+    }
+  ]
+
+  test: string = 'test';
 
   todayindex: number = 0;
   checkdaystatus: number[] = [];
