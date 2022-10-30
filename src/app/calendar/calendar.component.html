@@ -29,9 +29,7 @@
             </div>
             <div class="flex flex-col justify-center items-center self-stretch flex-grow relative">
                 <div class="self-stretch relative grid grid-cols-7 my-6">
-                    <div class=" text-lg font-medium text-center text-red-500">Sun</div>
-                    <div class=" text-lg font-medium text-center text-gray-500" *ngFor="let day of week">{{day}}</div>
-                    <div class=" text-lg font-medium text-center text-blue-500">Sat</div>
+                    <div class=" text-lg font-medium text-center text-gray-500" *ngFor="let day of week" [ngClass]="{'text-red-500' : day == 'Sun', 'text-blue-500' : day == 'Sat','text-gray-500' : day != 'Sun' && day != 'Sat'}">{{day}}</div>
                 </div>
                 <div class="self-stretch relative grid grid-cols-7">
                     <div class="h-[76px] rounded-2xl flex items-center justify-center" *ngFor="let day of selectedDaysInBeforeMonth">

@@ -34,11 +34,13 @@ export class CalendarComponent implements OnInit {
 
   test: string = 'test';
   week: string[] = [
+    'Sun',
     'Mon',
     'Tue',
     'Wed',
     'Thu',
-    'Fri'
+    'Fri',
+    'Sat'
   ]
 
   todayindex: number = 0;
