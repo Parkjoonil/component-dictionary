@@ -48,17 +48,17 @@ export class CalendarComponent implements OnInit {
 
   moralStatus: moralStatus = 'none';
 
-  selectedYear: number = 0;
-  selectedMonth: number = 0;
-  selectedBeforeYear: number = 0;
-  selectedBeforeMonth: number = 0;
-  selectedDayInWeeks: number = 0;
-  selectedBeforeMonthEndday: number = 0;
-  selectedDaysInBeforeMonth: number[][] = [];
-  selectedDaysInMonth: number[][] = [];
-  selectedDaysInNextMonth: number[][] = [];
-  selectedUserName?: string = '';
-  selectedUserId: number = 1;
+  Year: number = 0;
+  Month: number = 0;
+  BeforeYear: number = 0;
+  BeforeMonth: number = 0;
+  DayInWeeks: number = 0;
+  BeforeMonthEndday: number = 0;
+  DaysInBeforeMonth: number[][] = [];
+  DaysInMonth: number[][] = [];
+  DaysInNextMonth: number[][] = [];
+  UserName?: string = '';
+  UserId: number = 1;
   
   Today = new Date();
   todayDate = this.Today.getDate();
@@ -76,32 +76,32 @@ export class CalendarComponent implements OnInit {
 
 
   calendar(selectYear: number, selectMonth: number){
-    this.selectedDaysInBeforeMonth = [];
-    this.selectedDaysInMonth = [];
-    this.selectedDaysInNextMonth = [];
-    this.selectedYear = selectYear;
-    this.selectedMonth = selectMonth;
-    if(this.selectedMonth === -1) {
-      this.selectedMonth = 11;
-      this.selectedYear--;
+    this.DaysInBeforeMonth = [];
+    this.DaysInMonth = [];
+    this.DaysInNextMonth = [];
+    this.Year = selectYear;
+    this.Month = selectMonth;
+    if(this.Month === -1) {
+      this.Month = 11;
+      this.Year--;
     }
-    else if(this.selectedMonth === 12) {
-      this.selectedMonth = 0;
-      this.selectedYear++;
+    else if(this.Month === 12) {
+      this.Month = 0;
+      this.Year++;
     }
-    this.selectedBeforeYear = dayjs(new Date(selectYear, this.selectedMonth)).subtract(1, 'month').year();
-    this.selectedBeforeMonth = dayjs(new Date(selectYear, this.selectedMonth)).subtract(1, 'month').month();
-    this.selectedBeforeMonthEndday = dayjs(new Date(selectYear, this.selectedMonth)).subtract(1, 'month').daysInMonth();
-    this.selectedDayInWeeks = dayjs(new Date(selectYear, this.selectedMonth, 1)).day();
+    this.BeforeYear = dayjs(new Date(selectYear, this.Month)).subtract(1, 'month').year();
+    this.BeforeMonth = dayjs(new Date(selectYear, this.Month)).subtract(1, 'month').month();
+    this.BeforeMonthEndday = dayjs(new Date(selectYear, this.Month)).subtract(1, 'month').daysInMonth();
+    this.DayInWeeks = dayjs(new Date(selectYear, this.Month, 1)).day();
     
-    for (let i = this.selectedDayInWeeks; i > 0; i--) {
-      this.selectedDaysInBeforeMonth.push([this.selectedBeforeMonthEndday - i + 1, this.selectedDayInWeeks - i]);
+    for (let i = this.DayInWeeks; i > 0; i--) {
+      this.DaysInBeforeMonth.push([this.BeforeMonthEndday - i + 1, this.DayInWeeks - i]);
     }
-    for(let i = 1; i <= dayjs(new Date(selectYear, this.selectedMonth)).daysInMonth(); i++){
-      this.selectedDaysInMonth.push([i, dayjs(new Date(selectYear, this.selectedMonth, i)).day()]);
+    for(let i = 1; i <= dayjs(new Date(selectYear, this.Month)).daysInMonth(); i++){
+      this.DaysInMonth.push([i, dayjs(new Date(selectYear, this.Month, i)).day()]);
     }
-    for(let i = 1; i <= 6 - dayjs(new Date(selectYear, this.selectedMonth, dayjs(new Date(selectYear, this.selectedMonth)).daysInMonth())).day(); i++){
-      this.selectedDaysInNextMonth.push([i, dayjs(new Date(selectYear, this.selectedMonth + 1, i)).day()]);
+    for(let i = 1; i <= 6 - dayjs(new Date(selectYear, this.Month, dayjs(new Date(selectYear, this.Month)).daysInMonth())).day(); i++){
+      this.DaysInNextMonth.push([i, dayjs(new Date(selectYear, this.Month + 1, i)).day()]);
     }
   }
 
