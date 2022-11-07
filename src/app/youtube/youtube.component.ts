@@ -6,12 +6,14 @@ import { MODAL_DATA } from '../modal/modal-token'
 import { ModalService } from '../modal/modal.service';
 import { SettingsYoutubeComponent } from './settings-youtube/settings-youtube.component';
 import { ChannelsYoutubeComponent } from './channels-youtube/channels-youtube.component';
+import { cmsAnimations } from '../animations/animations';
 
 type Dashboard = { channelName: string, channelId: string, videos?: Video[] };
 @Component({
   selector: 'app-youtube',
   templateUrl: './youtube.component.html',
-  styleUrls: ['./youtube.component.scss']
+  styleUrls: ['./youtube.component.scss'],
+  animations: [cmsAnimations]
 })
 export class YoutubeComponent implements OnInit, AfterViewInit {
 
