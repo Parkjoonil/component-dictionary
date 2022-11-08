@@ -6,12 +6,14 @@ import { MODAL_DATA } from '../modal/modal-token'
 import { ModalService } from '../modal/modal.service';
 import { SettingsYoutubeComponent } from './settings-youtube/settings-youtube.component';
 import { ChannelsYoutubeComponent } from './channels-youtube/channels-youtube.component';
+import { cmsAnimations } from '../animations/animations';
 
 type Dashboard = { channelName: string, channelId: string, videos?: Video[] };
 @Component({
   selector: 'app-youtube',
   templateUrl: './youtube.component.html',
-  styleUrls: ['./youtube.component.scss']
+  styleUrls: ['./youtube.component.scss'],
+  animations: [cmsAnimations]
 })
 export class YoutubeComponent implements OnInit, AfterViewInit {
 
@@ -123,20 +125,19 @@ export class YoutubeComponent implements OnInit, AfterViewInit {
   }
 
   addChannel() {
-    this.modalService.openOverlay(ChannelsYoutubeComponent, this.youtubeChannelIds).onDismiss().subscribe((channels) => {
+    this.modalService.openOverlay(ChannelsYoutubeComponent, this.youtubeChannelIds).onDismiss().subscribe((youtubeChannels) => {
 
-      channels.map((id) => {
-        this.youtubeChannelIds.push(id);
-        this.youtubeService.getChannelVideos(id.channelId, this.count).subscribe((items) => {
-            id.videos = items.map((item: any) => ({
-              title: item.snippet.title,
-              videoId: item.id.videoId,
-              videoUrl: `https://www.youtube.com/watch?v=${item.id.videoId}`,
-              publishedAt: new Date(item.snippet.publishedAt),
-              thumbnail: item.snippet.thumbnails.high.url,
-            }));              
-        });
-      })
+        this.youtubeChannelIds = youtubeChannels;
+        // this.youtubeService.getChannelVideos(id.channelId, this.count).subscribe((items) => {
+        //     id.videos = items.map((item: any) => ({
+        //       title: item.snippet.title,
+        //       videoId: item.id.videoId,
+        //       videoUrl: `https://www.youtube.com/watch?v=${item.id.videoId}`,
+        //       publishedAt: new Date(item.snippet.publishedAt),
+        //       thumbnail: item.snippet.thumbnails.high.url,
+        //     }));              
+        // });
+        // })
     });
   }
 

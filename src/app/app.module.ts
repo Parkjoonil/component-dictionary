@@ -15,6 +15,7 @@ import { OverlayModule } from '@angular/cdk/overlay'
 import { PortalModule } from '@angular/cdk/portal';
 import { MODAL_DATA } from './modal/modal-token';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CalendarModule } from './calendar/calendar.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     UploadImageModule,
+    CalendarModule,
     WeatherModule,
     YoutubeModule,
     GoogleMapModule,

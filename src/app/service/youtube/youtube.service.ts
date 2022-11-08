@@ -27,12 +27,9 @@ export class YoutubeService {
       );
   }
 
-  getChannels(name: string): Observable <any> {
-    const url = `${this.API_URL}/search?&key=${this.API_KEY}&part=snippet&type=${name}&maxResults=3`;
-    return this.http.get(url)
-      .pipe(
-        map((response: any) => response.items)
-      );
+  getChannelInfo(id: string): Observable <any> {
+    const url = `${this.API_URL}/channels?&key=${this.API_KEY}&part=snippet&id=${id}`;
+    return this.http.get(url);
   }
 
 }

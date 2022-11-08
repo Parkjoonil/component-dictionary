@@ -9,6 +9,11 @@ export const menuList: MenuInfo[] = [
                 icon: 'dotted.svg',
                 name: '이미지 업로드',
                 href: '/upload-image',
+            },
+            {
+                icon: 'dotted.svg',
+                name: '캘린더',
+                href: '/calendar',
             }
         ]
     },

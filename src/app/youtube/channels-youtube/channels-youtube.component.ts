@@ -6,7 +6,7 @@ import { ModalRef } from 'src/app/modal/modal.service';
 import { YoutubeService } from 'src/app/service/youtube/youtube.service';
 
 type Dashboard = { channelName: string, channelId: string, videos?: Video[] };
-type ChannelInfo = { channelName: string, channelId: string, thumbnail: string };
+type ChannelInfo = { channelName: string, channelId: string, thumbnail?: string };
 @Component({
   selector: 'app-channels-youtube',
   templateUrl: './channels-youtube.component.html',
@@ -23,6 +23,7 @@ export class ChannelsYoutubeComponent implements OnInit {
   channelList: string[];
 
   searchResults: ChannelInfo[] = [];
+  searchResultsFinal: ChannelInfo[] = [];
 
 
   constructor(
@@ -44,30 +45,42 @@ export class ChannelsYoutubeComponent implements OnInit {
   }
 
   searchChannel(name: string) {
-    this.youtubeService.getChannels(name).subscribe((res) => {
-      console.log(res)
+    this.searchResults = [];
+    this.youtubeService.getVideos(name, 3).subscribe((res) => {
       res.map((channel) => {
-        this.searchResults.push({
-          channelId: channel.snippet.channelId,
-          channelName: channel.snippet.channelTitle,
-          thumbnail: channel.snippet.thumbnails.high.url
+        this.youtubeService.getChannelInfo(channel.snippet.channelId).subscribe((info) => {
+          this.searchResults.push({
+            channelName: channel.snippet.channelTitle,
+            channelId: channel.snippet.channelId,
+            thumbnail: info.items[0].snippet.thumbnails.high.url
+          })
+          
         })
       })
-      
     });
     
   }
 
   deleteChannel(youtubeChannelId: Dashboard) {
-    
+    this.youtubeChannelIds = this.youtubeChannelIds.filter((element) => element !== youtubeChannelId);
   }
 
   addChannel(searchResult: ChannelInfo) {
     this.youtubeService.getChannelVideos(searchResult.channelId, 5).subscribe((videos) => {
+      const videoList: Video[] = [];
+      for (const video of videos) {
+        videoList.push({
+          videoId: video.id.videoId,
+          videoUrl: `https://www.youtube.com/watch?v=${video.id.videoId}`,
+          title: video.snippet.title,
+          publishedAt: video.snippet.publishedAt,
+          thumbnail: video.snippet.thumbnails.high.url
+        })
+      }
       this.youtubeChannelIds.push({
         channelId: searchResult.channelId,
         channelName: searchResult.channelName,
-        videos: videos
+        videos: videoList
       })
     })
     

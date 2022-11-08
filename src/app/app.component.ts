@@ -12,7 +12,8 @@ export class AppComponent {
     'upload-image',
     'google-map',
     'youtube',
-    'weather'
+    'weather',
+    'calendar'
   ]
 
   constructor(
