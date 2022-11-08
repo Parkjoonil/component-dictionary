@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import * as dayjs from 'dayjs';
+import { cmsAnimations } from '../animations/animations.js';
 import './lunarcalendar.js';
 
 type moralStatus = 'none' | 'create'
@@ -10,6 +11,7 @@ type checkStatus = { fill: string, status: string };
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss'],
+  animations: [cmsAnimations]
 })
 export class CalendarComponent implements OnInit {
 

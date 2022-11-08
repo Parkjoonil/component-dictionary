@@ -5,6 +5,9 @@ module.exports = {
       container: {
         center: true,
       },
+      colors: {
+        
+      },
       extend: {
         borderRadius: {
           '0.5': '0.125rem',
