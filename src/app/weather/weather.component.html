@@ -1,7 +1,7 @@
 <div class="flex flex-col items-center">
     <div class="text-center mb-4">
         <form #form="ngForm" (submit)="onSubmit()">
-          <input class="bg-blue-100 outline-none border-none rounded-5 p-2 text-gray-500 text-base text-center" type="text" placeholder="search city" name="city" [(ngModel)]="cityNameInput">
+          <input class="bg-blue-100 outline-none border-none rounded-5 p-2 text-gray-500  text-center" type="text" placeholder="search city" name="city" [(ngModel)]="cityNameInput">
         </form>
     </div>
       
@@ -22,7 +22,7 @@
             <div class="w-[50%] flex">
               <div class="flex flex-col justify-center items-center w-[50%]">
                 <img class="w-8" src="../../assets/mintemp.png" alt="">
-                <p class="text-white text-base">min</p>
+                <p class="text-white ">min</p>
               </div>
               <div class="w-[50%] flex justify-start items-center text-white">
                 {{ weatherData.min_temp | number: '1.0-0' }}℃
@@ -31,7 +31,7 @@
             <div class="w-[50%] flex">
               <div class="flex flex-col justify-center items-center w-[50%]">
                 <img class="w-8" src="../../assets/maxtemp.png" alt="">
-                <p class="text-white text-base">max</p>
+                <p class="text-white ">max</p>
               </div>
               <div class="w-[50%] flex justify-start items-center text-white">
                 {{ weatherData.max_temp | number: '1.0-0' }}℃
@@ -40,7 +40,7 @@
             <div class="w-[50%] flex">
               <div class="flex flex-col justify-center items-center w-[50%]">
                 <img class="w-8" src="../../assets/humidity.png" alt="">
-                <p class="text-white text-base">humidity</p>
+                <p class="text-white ">humidity</p>
               </div>
               <div class="w-[50%] flex justify-start items-center text-white">
                 {{ weatherData.humidity }}%
@@ -49,7 +49,7 @@
             <div class="w-[50%] flex">
               <div class="flex flex-col justify-center items-center w-[50%]">
                 <img class="w-8" src="../../assets/wind.png" alt="">
-                <p class="text-white text-base">wind</p>
+                <p class="text-white ">wind</p>
               </div>
               <div class="w-[50%] flex justify-start items-center text-white">
                 {{ weatherData.wind_speed }} km/h
