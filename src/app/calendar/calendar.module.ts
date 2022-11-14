@@ -15,7 +15,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CommonModule,
     IonicModule,
     BrowserModule,
-    BrowserAnimationsModule
   ]
 })
 export class CalendarModule { }
