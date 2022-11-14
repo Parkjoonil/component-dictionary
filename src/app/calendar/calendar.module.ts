@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CalendarComponent } from './calendar.component';
 import { IonicModule } from '@ionic/angular';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -13,7 +14,8 @@ import { BrowserModule } from '@angular/platform-browser';
   imports: [
     CommonModule,
     IonicModule,
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule
   ]
 })
 export class CalendarModule { }
