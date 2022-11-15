@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as dayjs from 'dayjs';
+import { cmsAnimations } from '../animations/animations.js';
 import './lunarcalendar.js';
 
 type moralStatus = 'none' | 'create'

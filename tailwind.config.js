@@ -1,11 +1,14 @@
-/** @type {import('tailwindcss').Config} */ 
+/** @type {import('tailwindcss').Config} **/
 module.exports = {
-    content: ["./src/**/*.{html,js}"],
+    content: ["./src/**/*.{html,ts}"],
     theme: {
       container: {
         center: true,
       },
       extend: {
+        colors: {
+
+        },
         borderRadius: {
           '0.5': '0.125rem',
           '1': '0.25rem',
@@ -1206,7 +1209,7 @@ module.exports = {
           '14': '3.5rem',
         }
       },
-      
+
     },
     plugins: [],
   }

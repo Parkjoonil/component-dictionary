@@ -1,5 +1,5 @@
-<div class="p-7 min-w-[400vh]">
-    <h1 class="font-bold text-3xl" @introTopAnimation>Calendar </h1>
+<div class="p-7">
+    <h1 class="font-bold text-3xl">Calendar </h1>
     <div class="my-4">
         <div class="flex mt-5 flex-col justify-center w-full gap-2 p-8 rounded-2xl bg-white">
             <div class="flex justify-between w-full">
@@ -8,7 +8,7 @@
                     <div class="text-lg font-medium text-left text-gray-900" >{{ Year }}년 {{ Month + 1}}월</div>
                     <img src="assets/button-left.png" alt="" class="hover:bg-gray-200 rounded-full p-2 w-8 h-8 rotate-180 cursor-pointer" (click)="getNextMonthCalendar(Year, Month + 1)">
                     <div class="ml-8">
-                        <div class="w-[100px] h-[44px] bg-accent text-white px-3.5 py-2.5 text-base font-bold flex justify-center items-center rounded-2xl hover:bg-blue-600 hover:shadow-2xl select-none cursor-pointer" >
+                        <div class="w-[100px] h-[44px] bg-accent text-white px-3.5 py-2.5  font-bold flex justify-center items-center rounded-2xl hover:bg-blue-600 hover:shadow-2xl select-none cursor-pointer" >
                             전체보기
                         </div>
                     </div>

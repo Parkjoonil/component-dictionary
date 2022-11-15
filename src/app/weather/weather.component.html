@@ -1,61 +1,58 @@
 <div class="flex flex-col items-center">
     <div class="text-center mb-4">
         <form #form="ngForm" (submit)="onSubmit()">
-          <input class="bg-blue-100 outline-none border-none rounded-5 p-2 text-gray-500 text-base text-center" type="text" placeholder="search city" name="city" [(ngModel)]="cityNameInput">
+          <input class="bg-blue-100 outline-none border-none rounded-5 p-2 text-gray-500  text-center" type="text" placeholder="search city" name="city" [(ngModel)]="cityNameInput">
         </form>
     </div>
       
-      <div class="w-100 h-120 rounded-5 shadow-lg" *ngIf="weatherData">
-        <div class="relative overflow-hidden w-[100%] h-[50%] rounded-tr-5 rounded-tl-5">
-          <img class="absolute top-0 left-0 w-[100%] h-[100%]" src="../../assets/hot.jpg" *ngIf="weatherData.temp > 15">
-          <img class="absolute top-0 left-0 w-[100%] h-[100%]" src="../../assets/cold.jpg" *ngIf="weatherData.temp <= 15">
-          <div class="relative z-10 w-[100%] h-[100%] bg-slate-800 flex-col justify-center items-center ">
-            <div class="text-center text-white text-lg">{{ cityName }}</div>
-            <div class="text-white text-center text-6xl font-black">{{ weatherData.temp| number: '1.0-0'}}℃</div>
-          </div>
-        </div>
-        <div class="relative overflow-hidden w-[100%] h-[50%] rounded-bl-5 rounded-br-5 p-2 flex flex-col bg-blue-400">
-          <div class="text-white">
-            More Information
-          </div>
-          <div class="flex flex-1 bg-blue-300 rounded-bl-5 rounded-br-5 mt-2 flex-wrap">
-            <div class="w-[50%] flex">
-              <div class="flex flex-col justify-center items-center w-[50%]">
-                <img class="w-8" src="../../assets/mintemp.png" alt="">
-                <span class="text-white text-base">min</span>
-              </div>
-              <div class="w-[50%] flex justify-start items-center text-white">
-                {{ weatherData.min_temp | number: '1.0-0' }}℃
-              </div>
-            </div>
-            <div class="w-[50%] flex">
-              <div class="flex flex-col justify-center items-center w-[50%]">
-                <img class="w-8" src="../../assets/maxtemp.png" alt="">
-                <span class="text-white text-base">max</span>
-              </div>
-              <div class="w-[50%] flex justify-start items-center text-white">
-                {{ weatherData.max_temp | number: '1.0-0' }}℃
-              </div>
-            </div>
-            <div class="w-[50%] flex">
-              <div class="flex flex-col justify-center items-center w-[50%]">
-                <img class="w-8" src="../../assets/humidity.png" alt="">
-                <span class="text-white text-base">humidity</span>
-              </div>
-              <div class="w-[50%] flex justify-start items-center text-white">
-                {{ weatherData.humidity }}%
-              </div>
-            </div>
-            <div class="w-[50%] flex">
-              <div class="flex flex-col justify-center items-center w-[50%]">
-                <img class="w-8" src="../../assets/wind.png" alt="">
-                <span class="text-white text-base">wind</span>
-              </div>
-              <div class="w-[50%] flex justify-start items-center text-white">
-                {{ weatherData.wind_speed }} km/h
-              </div>
-          </div>
-      
+    <div class="w-100 h-120 rounded-5 shadow-lg" *ngIf="weatherData">
+      <div class="relative overflow-hidden w-[100%] h-[50%] rounded-tr-5 rounded-tl-5">
+        <img class="absolute top-0 left-0 w-[100%] h-[100%]" src="../../assets/hot.jpg" *ngIf="weatherData.temp > 15">
+        <img class="absolute top-0 left-0 w-[100%] h-[100%]" src="../../assets/cold.jpg" *ngIf="weatherData.temp <= 15">
+        <div class="relative z-10 w-[100%] h-[100%] bg-slate-800 flex-col justify-center items-center ">
+          <div class="text-center text-white text-lg">{{ cityName }}</div>
+          <div class="text-white text-center text-6xl font-black">{{ weatherData.temp| number: '1.0-0'}}℃</div>
         </div>
       </div>
+      <div class="relative overflow-hidden w-[100%] h-[50%] rounded-bl-5 rounded-br-5 p-2 flex flex-col bg-blue-400">
+          More Information
+        <div class="flex flex-1 bg-blue-300 rounded-bl-5 rounded-br-5 mt-2 flex-wrap">
+          <div class="w-[50%] flex">
+            <div class="flex flex-col justify-center items-center w-[50%]">
+              <img class="w-8" src="../../assets/mintemp.png" alt="">
+              <p class="text-white ">min</p>
+            </div>
+            <div class="w-[50%] flex justify-start items-center text-white">
+              {{ weatherData.min_temp | number: '1.0-0' }}℃
+            </div>
+          </div>
+          <div class="w-[50%] flex">
+            <div class="flex flex-col justify-center items-center w-[50%]">
+              <img class="w-8" src="../../assets/maxtemp.png" alt="">
+              <p class="text-white ">max</p>
+            </div>
+            <div class="w-[50%] flex justify-start items-center text-white">
+              {{ weatherData.max_temp | number: '1.0-0' }}℃
+            </div>
+          </div>
+          <div class="w-[50%] flex">
+            <div class="flex flex-col justify-center items-center w-[50%]">
+              <img class="w-8" src="../../assets/humidity.png" alt="">
+              <p class="text-white ">humidity</p>
+            </div>
+            <div class="w-[50%] flex justify-start items-center text-white">
+              {{ weatherData.humidity }}%
+            </div>
+          </div>
+          <div class="w-[50%] flex">
+            <div class="flex flex-col justify-center items-center w-[50%]">
+              <img class="w-8" src="../../assets/wind.png" alt="">
+              <p class="text-white ">wind</p>
+            </div>
+            <div class="w-[50%] flex justify-start items-center text-white">
+              {{ weatherData.wind_speed }} km/h
+            </div>
+          </div>
+      </div>
+    </div>
 </div>

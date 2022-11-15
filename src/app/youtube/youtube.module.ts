@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { YoutubeComponent } from './youtube.component';
-import { YoutubeService } from '../service/youtube/youtube.service';
-import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SettingsYoutubeComponent } from './settings-youtube/settings-youtube.component';
-import { ChannelsYoutubeComponent } from './channels-youtube/channels-youtube.component';
 import { MatSliderModule } from '@angular/material/slider';
+import { BrowserModule } from '@angular/platform-browser';
+import { YoutubeService } from '../service/youtube/youtube.service';
+import { ChannelsYoutubeComponent } from './channels-youtube/channels-youtube.component';
+import { SettingsYoutubeComponent } from './settings-youtube/settings-youtube.component';
+import { YoutubeComponent } from './youtube.component';
 
 
 
