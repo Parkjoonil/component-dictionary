@@ -5,7 +5,7 @@
         </form>
     </div>
 
-    <div class="w-100 h-120 rounded-5 shadow-lg" *ngIf="weatherData">
+    <div class="min-w-[25rem] w-full h-120 rounded-5 shadow-lg" *ngIf="weatherData">
       <div class="relative overflow-hidden w-[100%] h-[50%] rounded-tr-5 rounded-tl-5">
         <img class="absolute top-0 left-0 w-[100%] h-[100%]" src="../../assets/hot.jpg" *ngIf="weatherData.temp > 15">
         <img class="absolute top-0 left-0 w-[100%] h-[100%]" src="../../assets/cold.jpg" *ngIf="weatherData.temp <= 15">
