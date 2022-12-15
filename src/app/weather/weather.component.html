@@ -4,52 +4,52 @@
           <input class="bg-blue-100 outline-none border-none rounded-5 p-2 text-gray-500  text-center" type="text" placeholder="search city" name="city" [(ngModel)]="cityNameInput">
         </form>
     </div>
-      
-    <div class="w-100 h-120 rounded-5 shadow-lg" *ngIf="weatherData">
+
+    <div class="min-w-[25rem] w-full h-120 rounded-5 shadow-lg" *ngIf="weatherData">
       <div class="relative overflow-hidden w-[100%] h-[50%] rounded-tr-5 rounded-tl-5">
-        <img class="absolute top-0 left-0 w-[100%] h-[100%]" src="../../assets/hot.jpg" *ngIf="weatherData.temp > 15">
-        <img class="absolute top-0 left-0 w-[100%] h-[100%]" src="../../assets/cold.jpg" *ngIf="weatherData.temp <= 15">
-        <div class="relative z-10 w-[100%] h-[100%] bg-slate-800 flex-col justify-center items-center ">
+        <img class="absolute top-0 left-0 w-full h-full" src="../../assets/hot.jpg" *ngIf="weatherData.temp > 15">
+        <img class="absolute top-0 left-0 w-full h-full" src="../../assets/cold.jpg" *ngIf="weatherData.temp <= 15">
+        <div class="relative z-10 w-full h-full bg-slate-800 flex-col justify-center items-center ">
           <div class="text-center text-white text-lg">{{ cityName }}</div>
           <div class="text-white text-center text-6xl font-black">{{ weatherData.temp| number: '1.0-0'}}℃</div>
         </div>
       </div>
-      <div class="relative overflow-hidden w-[100%] h-[50%] rounded-bl-5 rounded-br-5 p-2 flex flex-col bg-blue-400">
+      <div class="relative overflow-hidden w-[100%] h-[50%] rounded-b-5 p-2 flex flex-col text-white bg-blue-400">
           More Information
-        <div class="flex flex-1 bg-blue-300 rounded-bl-5 rounded-br-5 mt-2 flex-wrap">
+        <div class="flex flex-1 bg-blue-300 rounded-b-5 mt-2 flex-wrap">
           <div class="w-[50%] flex">
             <div class="flex flex-col justify-center items-center w-[50%]">
-              <img class="w-8" src="../../assets/mintemp.png" alt="">
-              <p class="text-white ">min</p>
+              <img class="w-8" src="/assets/mintemp.png" >
+              <p class=" ">min</p>
             </div>
-            <div class="w-[50%] flex justify-start items-center text-white">
+            <div class="w-[50%] flex justify-start items-center ">
               {{ weatherData.min_temp | number: '1.0-0' }}℃
             </div>
           </div>
           <div class="w-[50%] flex">
             <div class="flex flex-col justify-center items-center w-[50%]">
-              <img class="w-8" src="../../assets/maxtemp.png" alt="">
-              <p class="text-white ">max</p>
+              <img class="w-8" src="/assets/maxtemp.png" >
+              <p class=" ">max</p>
             </div>
-            <div class="w-[50%] flex justify-start items-center text-white">
+            <div class="w-[50%] flex justify-start items-center ">
               {{ weatherData.max_temp | number: '1.0-0' }}℃
             </div>
           </div>
           <div class="w-[50%] flex">
             <div class="flex flex-col justify-center items-center w-[50%]">
-              <img class="w-8" src="../../assets/humidity.png" alt="">
-              <p class="text-white ">humidity</p>
+              <img class="w-8" src="/assets/humidity.png" >
+              <p class=" ">humidity</p>
             </div>
-            <div class="w-[50%] flex justify-start items-center text-white">
+            <div class="w-[50%] flex justify-start items-center ">
               {{ weatherData.humidity }}%
             </div>
           </div>
           <div class="w-[50%] flex">
             <div class="flex flex-col justify-center items-center w-[50%]">
-              <img class="w-8" src="../../assets/wind.png" alt="">
-              <p class="text-white ">wind</p>
+              <img class="w-8" src="/assets/wind.png" >
+              <p class=" ">wind</p>
             </div>
-            <div class="w-[50%] flex justify-start items-center text-white">
+            <div class="w-[50%] flex justify-start items-center ">
               {{ weatherData.wind_speed }} km/h
             </div>
           </div>

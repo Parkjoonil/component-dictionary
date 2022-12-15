@@ -18,7 +18,7 @@
     </div>
 
     <div style="float: left">
-        <img [src]="cropImagePreview" alt="">
+        <img [src]="cropImagePreview" >
     </div>
 
 </div>
@@ -32,8 +32,8 @@
     <div style="float: left">
         <div class="font-sans ">Image Preview</div>
 
-        <img *ngFor="let image of images" [src]="image" alt="">
-        
+        <img *ngFor="let image of images" [src]="image" >
+
     </div>
 
     <div style="float: left">
